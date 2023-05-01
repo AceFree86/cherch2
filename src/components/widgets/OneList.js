@@ -1,0 +1,73 @@
+import React, { useState, useEffect } from "react";
+import { MyFormattedDate } from "../helpers/Servise";
+
+const Details = ({ title, text }) => {
+  return (
+    <li className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]">
+      <div>
+        <h5
+          className="mb-1 capitalize text-left text-blue-600 font-bold text-2xl
+         sm:text-xl xs:text-lg"
+        >{`${title}`}</h5>
+        <ul className="list-disc max-w-md space-y-1">
+          {text.map((label) => (
+            <li key={label.get_time} className="">
+              <p
+                className="border-b border-twilightBlue-400 mb-2 font-semibold
+               text-left w-full text-darkShade"
+              >{`${label.get_time} год. - ${label.description}.`}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
+};
+
+const OneList = ({ doc }) => {
+  const [postsState, setPostsState] = useState([]);
+
+  useEffect(() => {
+    let didCancel = false;
+    async function fetchData() {
+      if (!didCancel) {
+        setPostsState(doc);
+      }
+    }
+    fetchData();
+    return () => {
+      didCancel = true;
+    };
+  }, [doc]);
+
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, "0");
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const year = today.getFullYear();
+  const formattedToday = `${day}.${month}.${year}`;
+
+  const filteredPosts = postsState.filter(
+    (post) => post._day === formattedToday
+  );
+
+  return (
+    <>
+      {filteredPosts.map((document) => (
+        <div key={document._id}>
+          <div className="flex items-center self-start mt-2 relative">
+            <ul className="w-full flex flex-col items-start justify-between ml-4">
+              <Details
+                title={`${MyFormattedDate(document._day)} 
+            ${document.stateDay}
+            ${document.namesSaints && ` (${document.namesSaints})`}:`}
+                text={document.labels}
+              />
+            </ul>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+
+export default OneList;
