@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const bodyObject = JSON.parse(req.body);
-      console.log(bodyObject);
       const { db } = await connectToDatabase();
       const hashedPassword = await bcrypt.hash(bodyObject.password, 11);
       const result = await db.collection("User_Admin").insertOne({

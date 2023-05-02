@@ -7,8 +7,6 @@ import { ObjectId } from "mongodb";
 import UpdateGospelForm from "@/components/form/UpdateGospelForm";
 
 export default function FormGospelUpdate({ list, path_p }) {
-  console.log(path_p);
-  console.log(list);
   return (
     <>
       <Head>

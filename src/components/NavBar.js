@@ -64,9 +64,7 @@ const NavBar = () => {
 
   return (
     <header
-      className={`${
-        isActive("/") ? "bg-moonlight" : null
-      }  w-full px-32 py-8 font-medium flex items-center 
+      className={`w-full px-32 py-8 font-medium flex items-center 
       justify-between relative z-10 lg:px-16 md:px12 sm:px-8`}
     >
       <botton
