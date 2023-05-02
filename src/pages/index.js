@@ -1,5 +1,4 @@
 import React from "react";
-import ReactPlayer from "react-player";
 import { connectToDatabase } from "../../lib/mongodb";
 import Head from "next/head";
 import Image from "next/image";
