@@ -67,7 +67,7 @@ const Infotable = ({
                               path_p: pathPage,
                             },
                           }}
-                          className="underline text-blue-500 text-base md:text-sm"
+                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline md:text-sm"
                         >
                           читати далі.
                         </Link>

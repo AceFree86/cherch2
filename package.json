@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^2.0.2",
-    "@auth0/nextjs-auth0": "^2.5.0",
     "antd": "^5.4.4",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",

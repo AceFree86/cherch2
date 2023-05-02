@@ -4,9 +4,11 @@ import Head from "next/head";
 import Link from "next/link";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
+import { useSession } from "next-auth/react";
 import Timetable from "@/components/widgets/Timetable";
 
 export default function Schedule({ list }) {
+  const { data } = useSession();
   return (
     <>
       <Head>
@@ -20,12 +22,16 @@ export default function Schedule({ list }) {
             <Hstyle text="Розклад" />
           </div>
           <div className="flex items-center justify-center text-center w-full mx-auto py-2">
-            <Link
-              href="/form-add"
-              className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
-            >
-              Додати
-            </Link>
+            {data?.user ? (
+              <>
+                <Link
+                  href="/form-add"
+                  className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
+                >
+                  Додати
+                </Link>
+              </>
+            ) : null}
           </div>
           <div className="mt-5 sm:w-full">
             <Timetable text="start" doc={list} hiding={false} />

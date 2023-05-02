@@ -3,6 +3,7 @@ import { connectToDatabase } from "../../lib/mongodb";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import Infotable from "@/components/widgets/Infotable";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
@@ -10,6 +11,7 @@ import Layout from "@/components/Layout";
 export default function Gospel({ list, currentPage, numPages }) {
   const [currentPag, setCurrentPage] = useState(currentPage);
   const [postsState, setPostsState] = useState([]);
+  const { data } = useSession();
   const router = useRouter();
   const pathPage = router.asPath;
 
@@ -54,12 +56,16 @@ export default function Gospel({ list, currentPage, numPages }) {
             <Hstyle text="Проповіді" />
           </div>
           <div className="flex items-center justify-center text-center w-full mx-auto py-2">
-            <Link
-              href="/form-gospel-add"
-              className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
-            >
-              Додати
-            </Link>
+            {data?.user ? (
+              <>
+                <Link
+                  href="/form-gospel-add"
+                  className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
+                >
+                  Додати
+                </Link>
+              </>
+            ) : null}
           </div>
           <Infotable
             postsS={postsState}

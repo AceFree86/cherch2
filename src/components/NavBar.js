@@ -100,7 +100,6 @@ const NavBar = () => {
           <CustomLink href="/schedule" title="Розклад" className="mx-2" />
           <CustomLink href="/gospel" title="Проповіді" className="mx-2" />
           <CustomLink href="/news" title="Новини" className="mx-2" />
-          <CustomLink href="/contacts" title="Контакти" className="mx-2" />
           {data?.user ? (
             <>
               <Link
@@ -186,12 +185,6 @@ const NavBar = () => {
             <CustomMobileLink
               href="/news"
               title="Новини"
-              className=""
-              toggle={handleClick}
-            />
-            <CustomMobileLink
-              href="/contacts"
-              title="Контакти"
               className=""
               toggle={handleClick}
             />
