@@ -20,24 +20,15 @@ export default function Home({ list, gospel, news }) {
       </Head>
 
       <main className="border-t border-gray-300 border-b-gray-200 flex items-center text-dark w-full relative">
-        <video
-          className="absolute top-0 left-0 w-full object-cover z-0 h-full bg-light opacity-80"
-          src="/video/video.mp4"
-          width="100%"
-          height="100vh"
-          autoPlay
-          loop
-          muted
-        />
         <Layout className="min-h-screen pt-0 md:pt-16 sm:pt-8 grid place-items-center h-screen">
-          <div className="image-container flex items-center justify-between w-full lg:flex-col rounded-lg bg-light1 border border-light1 ">
+          <div className="flex items-center justify-between w-full lg:flex-col rounded-lg bg-light1 border border-light1 ">
             <div className="w-1/2">
               <Image
                 src="/images/nativite.jpeg"
                 width={100}
                 height={100}
                 alt="Церква Різдва Богородиці"
-                className="w-full h-auto inline-block rounded-lg ml-2 mt-2.5"
+                className="w-full h-auto inline-block rounded-lg ml-2 mt-2.5 mb-2.5"
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
