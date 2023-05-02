@@ -7,7 +7,6 @@ import Hstyle from "@/components/helpers/Hstyle";
 import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
-import PicCherch from "../../public/images/hero2.webp";
 
 export default function Home({ list, gospel, news }) {
   return (
@@ -20,14 +19,17 @@ export default function Home({ list, gospel, news }) {
       </Head>
 
       <main className="border-t border-gray-300 border-b-gray-200 flex items-center text-dark w-full bg-fixed bg-center bg-cover custom_img">
-        <Layout className="bg-lightG/90 min-h-screen pt-0 md:pt-16 sm:pt-8 grid place-items-center h-screen"
-        >
+        <Layout className="bg-lightG/90 min-h-screen pt-0 md:pt-16 sm:pt-8 grid place-items-center h-screen">
           <div className="flex items-center justify-between w-full lg:flex-col">
             <div className="w-1/2">
               <Image
-                src={PicCherch}
+                src={
+                  "https://res.cloudinary.com/dduxpqmhn/image/upload/v1683049728/nativite_h68in3.jpg"
+                }
+                width={100}
+                height={100}
                 alt="Церква Різдва Богородиці"
-                className="w-full h-auto inline-block"
+                className="w-full h-auto inline-block rounded-lg"
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
@@ -40,8 +42,16 @@ export default function Home({ list, gospel, news }) {
                  font-mont text-royalNavy font-bold capitalize
                  text-4xl md:text-3xl sm:text-2xl"
               >
-                Греко-Католицька парафія Різдва Пресвятої Богородиці мкр.Дравці
+                {"Греко-Католицька парафія Різдва Пресвятої Богородиці"}
               </h1>
+              <p
+                className="w-full mx-auto py-2 flex items-center justify-center
+                 text-center overflow-hidden sm:py-0
+                 font-mont text-royalNavy font-bold
+                 text-4xl md:text-3xl sm:text-2xl"
+              >
+                мкр. Дравці
+              </p>
               <OneList doc={list} />
             </div>
           </div>
@@ -83,6 +93,22 @@ export default function Home({ list, gospel, news }) {
           />
         </Layout>
       </section>
+      <section className="flex items-center text-dark w-full">
+        <Layout className="pt-8">
+          <Hstyle text="Контанкти" />
+          <div className="mt-5 sm:w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10557.696192339188!2d22.325410000000005!3d48.58257900000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47391bde37af41d3%3A0xa82320aab776021a!2z0KbQtdGA0LrQstCwINCg0ZbQt9C00LLQsCDQn9GA0LXRgdCy0Y_RgtC-0Zcg0JHQvtCz0L7RgNC-0LTQuNGG0ZY!5e0!3m2!1suk!2sua!4v1683050758815!5m2!1suk!2sua"
+              width="600"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </Layout>
+      </section>
     </>
   );
 }
@@ -111,19 +137,19 @@ export async function getServerSideProps() {
       ])
       .toArray();
 
-      const gospel = await db
-        .collection("List_Gospel")
-        .find({})
-        .limit(1)
-        .sort({ $natural: -1 })
-        .toArray();
+    const gospel = await db
+      .collection("List_Gospel")
+      .find({})
+      .limit(1)
+      .sort({ $natural: -1 })
+      .toArray();
 
-      const news = await db
-        .collection("List_News")
-        .find({})
-        .limit(2)
-        .sort({ $natural: -1 })
-        .toArray();
+    const news = await db
+      .collection("List_News")
+      .find({})
+      .limit(2)
+      .sort({ $natural: -1 })
+      .toArray();
 
     return {
       props: {
