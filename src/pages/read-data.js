@@ -78,7 +78,7 @@ export default function ReadData({ list, path_p }) {
            text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
            focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-auto mt-5"
                         >
-                          Назат
+                          Назад
                         </Link>
                       </div>
                     </div>

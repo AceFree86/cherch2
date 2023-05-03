@@ -93,7 +93,7 @@ export default function Home({ list, gospel, news }) {
       </section>
       <section className="flex items-center text-dark w-full">
         <Layout className="pt-8">
-          <Hstyle text="Контанкти" />
+          <Hstyle text="Контакти" />
           <div className="mt-5 sm:w-full">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10557.696192339188!2d22.325410000000005!3d48.58257900000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47391bde37af41d3%3A0xa82320aab776021a!2z0KbQtdGA0LrQstCwINCg0ZbQt9C00LLQsCDQn9GA0LXRgdCy0Y_RgtC-0Zcg0JHQvtCz0L7RgNC-0LTQuNGG0ZY!5e0!3m2!1suk!2sua!4v1683050758815!5m2!1suk!2sua"
