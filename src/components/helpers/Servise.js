@@ -7,7 +7,7 @@ import url from "url";
 
 export const MyFormattedDate = (today) => {
   const [day, month, year] = today.split(".");
-  const date = dayjs(`${year}-${month}-${day}`);
+  const date = dayjs(`${year} ${month} ${day}`);
   const formattedDate = date
     .locale("uk")
     .format("dddd, MMMM D")

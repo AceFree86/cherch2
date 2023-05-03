@@ -17,16 +17,21 @@ const Details = ({ title, text }) => {
       <LiIcon refarence={ref} />
       <div initial={{ y: 50 }} whileinview={{ y: 0 }}>
         <h5
-          className="mb-1 capitalize text-left text-blue-600 font-bold text-2xl
-         sm:text-xl xs:text-lg"
-        >{`${title}`}</h5>
-        <ul className="list-disc max-w-md space-y-1">
+          className={`mb-1 capitalize text-left font-bold text-2xl sm:text-xl xs:text-lg
+            ${
+              title.includes("неділя")
+                ? "text-red-500"
+                : "text-blue-600"
+            }`}
+        >
+          {title}
+        </h5>
+        <ul className="list-disc md:list-none max-w-md space-y-1">
           {text.map((label) => (
-            <li key={label.get_time} className="">
-              <p
-                className="border-b border-twilightBlue-400 mb-2 font-semibold
-               text-left w-full text-darkShade"
-              >{`${label.get_time} год. - ${label.description}.`}</p>
+            <li key={label.get_time}>
+              <p className="border-b border-twilightBlue-400 mb-2 font-semibold text-left w-full text-darkShade">
+                {`${label.get_time} год. - ${label.description}.`}
+              </p>
             </li>
           ))}
         </ul>
@@ -80,15 +85,14 @@ const Timetable = ({ text, doc, hiding }) => {
         className="absolute left-9 top-0 w-[4px] h-full bg-blue-600 origin-top 
         md:w-[2px] md:left-[30px] xs:left-[20px]"
       />
-
       {postsState.map((document) => (
         <div key={document._id}>
           <div className="flex items-center self-start mt-2 relative">
-            <ul className="w-full flex flex-col items-start justify-between ml-4">
+            <ul className="w-full flex flex-col items-start justify-between ml-4 md:ml-1">
               <Details
-                title={`${MyFormattedDate(document._day)} 
-                  ${document.stateDay}
-                  ${document.namesSaints && ` (${document.namesSaints})`}:`}
+                title={`${MyFormattedDate(document._day)} ${
+                  document.stateDay
+                } ${document.namesSaints && ` (${document.namesSaints})`}:`}
                 text={document.labels}
               />
               <div
@@ -107,13 +111,13 @@ const Timetable = ({ text, doc, hiding }) => {
                       }}
                       className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
                     >
-                      Обновити
+                      {"Обновити"}
                     </Link>
                     <button
                       onClick={() => deleteTodo(document._id)}
                       className="text-white shadow-sm bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md"
                     >
-                      Видалити
+                      {"Видалити"}
                     </button>
                   </>
                 ) : null}
