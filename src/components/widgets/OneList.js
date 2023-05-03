@@ -13,8 +13,7 @@ const Details = ({ title, text }) => {
           {text.map((label) => (
             <li key={label.get_time} className="">
               <p
-                className="border-b border-twilightBlue-400 mb-2 font-semibold
-               text-left w-full text-darkShade"
+                className="border-b border-twilightBlue-400 mb-2 font-semibold text-left w-full text-darkShade"
               >{`${label.get_time} год. - ${label.description}.`}</p>
             </li>
           ))}
@@ -54,7 +53,7 @@ const OneList = ({ doc }) => {
     <>
       {filteredPosts.map((document) => (
         <div key={document._id}>
-          <div className="flex items-center self-start mt-2 relative">
+          <div className="">
             <ul className="w-full flex flex-col items-start justify-between ml-4">
               <Details
                 title={`${MyFormattedDate(document._day)} 

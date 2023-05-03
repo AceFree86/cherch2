@@ -8,7 +8,7 @@ import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
 
-export default function Home({ list, gospel, news }) {
+export default function Home({ list, gospel, news, history }) {
   return (
     <>
       <Head>
@@ -20,14 +20,14 @@ export default function Home({ list, gospel, news }) {
 
       <main className="border-t border-gray-300 border-b-gray-200 flex items-center text-dark w-full">
         <Layout className="min-h-screen pt-0 md:pt-16 sm:pt-8 grid place-items-center h-screen">
-          <div className="flex items-center justify-between w-full lg:flex-col rounded-lg bg-light1 border border-light1 ">
+          <div className="flex items-center justify-between w-full lg:flex-col rounded-lg bg-moonlight border border-light ">
             <div className="w-1/2">
               <Image
                 src="/images/nativite.jpeg"
                 width={100}
                 height={100}
                 alt="Церква Різдва Богородиці"
-                className="w-full h-auto inline-block rounded-lg ml-2 mt-2.5 mb-2.5"
+                className="w-full h-auto inline-block rounded-lg ml-2.5 mt-2.5 mb-2.5"
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
@@ -48,9 +48,18 @@ export default function Home({ list, gospel, news }) {
                  font-mont text-royalNavy font-bold
                  text-4xl md:text-3xl sm:text-2xl"
               >
-                мкр. Дравці
+                {"мкр. Дравці"}
               </p>
+
               <OneList doc={list} />
+              <div className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]">
+                <ul className="border-b border-twilightBlue-400 mb-2 font-semibold text-left w-full text-darkShade ist-disc max-w-md space-y-1">
+                  <li>{"Настоятель храму о. Павло Фіцай"}</li>
+                  <li>
+                    <a href={`tel:0667303179`}>моб. 0667303179</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </Layout>
@@ -83,6 +92,20 @@ export default function Home({ list, gospel, news }) {
           <Infotable
             postsS={news}
             collection={"List_News"}
+            pathPage={"/"}
+            pathN={""}
+            n_folder={""}
+            router={null}
+            hiding={true}
+          />
+        </Layout>
+      </section>
+      <section className="flex items-center text-dark w-full">
+        <Layout className="pt-8">
+          <Hstyle text="Історія" />
+          <Infotable
+            postsS={history}
+            collection={"History"}
             pathPage={"/"}
             pathN={""}
             n_folder={""}
@@ -149,11 +172,14 @@ export async function getServerSideProps() {
       .sort({ $natural: -1 })
       .toArray();
 
+       const history = await db.collection("History").find({}).toArray();
+
     return {
       props: {
         list: JSON.parse(JSON.stringify(list)),
         gospel: JSON.parse(JSON.stringify(gospel)),
         news: JSON.parse(JSON.stringify(news)),
+        history: JSON.parse(JSON.stringify(history)),
       },
     };
   } catch (e) {
