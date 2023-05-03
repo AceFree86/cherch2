@@ -15,7 +15,7 @@ const Details = ({ title, text }) => {
       className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]"
     >
       <LiIcon refarence={ref} />
-      <div initial={{ y: 50 }} whileInView={{ y: 0 }}>
+      <div initial={{ y: 50 }} whileinview={{ y: 0 }}>
         <h5
           className="mb-1 capitalize text-left text-blue-600 font-bold text-2xl
          sm:text-xl xs:text-lg"

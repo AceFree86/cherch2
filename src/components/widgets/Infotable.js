@@ -45,7 +45,6 @@ const Infotable = ({
                     width={100}
                     height={100}
                     alt="Uploaded Image"
-                    priority
                     className="w-1/4 md:w-full h-auto inline-block"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />

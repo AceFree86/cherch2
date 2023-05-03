@@ -33,21 +33,22 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   };
 
   return (
-    <botton
-      href={href}
-      className={`${className} relative group my-2`}
-      onClick={handleClick}
-    >
-      {title}
-      <samp
-        className={`h-[1px] inline-block bg-light absolute left-0 bottom-0.5 
-        group-hover:w-full transition-[width] ease duration-300 ${
-          router.asPath === href ? "w-full" : "w-0"
-        }`}
+    <>
+      <button
+        href={href}
+        className={`${className} relative group my-4 text-lg uppercase`}
+        onClick={handleClick}
       >
-        &nbsp;
-      </samp>
-    </botton>
+        {title}
+        <samp
+          className={`h-[1px] inline-block bg-light absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+            router.asPath === href ? "w-full" : "w-0"
+          }`}
+        >
+          &nbsp;
+        </samp>
+      </button>
+    </>
   );
 };
 
@@ -64,11 +65,10 @@ const NavBar = () => {
 
   return (
     <header
-      className={`w-full px-32 py-8 font-medium flex items-center 
-      justify-between relative z-10 lg:px-16 md:px12 sm:px-8`}
+      className={`w-full px-32 py-8 font-medium flex items-center justify-between relative z-10 lg:px-16 md:px12 sm:px-8`}
     >
-      <botton
-        className="flex-col justify-center items-center hidden xl:flex"
+      <button
+        className="flex-col justify-center items-center hidden xl:flex h-10 w-10"
         onClick={handleClick}
       >
         <span
@@ -86,7 +86,7 @@ const NavBar = () => {
             isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
           }`}
         ></span>
-      </botton>
+      </button>
 
       <div className="absolute left-[50%] top-2 xl:ml-1 translate-x-[-50%]">
         <Logo />
