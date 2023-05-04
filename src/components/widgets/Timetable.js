@@ -7,22 +7,18 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import LiIcon from "./LiIcon";
 
-const Details = ({ title, text }) => {
+const Details = ({ title, text, state }) => {
   const ref = useRef(null);
   return (
     <li
       ref={ref}
       className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]"
     >
-      <LiIcon refarence={ref} />
+      <LiIcon refarence={ref} text={state} />
       <div initial={{ y: 50 }} whileinview={{ y: 0 }}>
         <h5
           className={`mb-1 capitalize text-left font-bold text-2xl sm:text-xl xs:text-lg
-            ${
-              title.includes("неділя")
-                ? "text-red-500"
-                : "text-blue-600"
-            }`}
+            ${title.includes("неділя") ? "text-red-500" : "text-blue-600"}`}
         >
           {title}
         </h5>
@@ -40,7 +36,7 @@ const Details = ({ title, text }) => {
   );
 };
 
-const Timetable = ({ text, doc, hiding }) => {
+const Timetable = ({ state, doc, hiding }) => {
   const router = useRouter();
   const { data } = useSession();
   const [postsState, setPostsState] = useState([]);
@@ -75,7 +71,7 @@ const Timetable = ({ text, doc, hiding }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", `center ${text}`],
+    offset: ["start center", `center ${state}`],
   });
 
   return (
@@ -94,9 +90,10 @@ const Timetable = ({ text, doc, hiding }) => {
                   document.stateDay
                 } ${document.namesSaints && ` (${document.namesSaints})`}:`}
                 text={document.labels}
+                state={state}
               />
               <div
-                className={`w-full flex justify-evenly ${
+                className={`w-full mb-7 flex justify-around ${
                   hiding ? "invisible" : "visible"
                 }`}
               >

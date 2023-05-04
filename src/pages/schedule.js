@@ -34,7 +34,7 @@ export default function Schedule({ list }) {
             ) : null}
           </div>
           <div className="mt-5 sm:w-full">
-            <Timetable text="start" doc={list} hiding={false} />
+            <Timetable state="start" doc={list} hiding={false} />
           </div>
         </Layout>
       </main>

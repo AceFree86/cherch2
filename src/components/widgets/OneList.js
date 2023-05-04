@@ -9,7 +9,7 @@ const Details = ({ title, text }) => {
           className={`mb-1 capitalize text-left font-bold text-2xl sm:text-xl xs:text-lg
             ${title.includes("неділя") ? "text-red-500" : "text-blue-600"}`}
         >{`${title}`}</h5>
-        <ul className="list-disc max-w-md space-y-1">
+        <ul className="list-disc md:list-none max-w-md space-y-1">
           {text.map((label) => (
             <li key={label.get_time}>
               <p className="mb-2 font-semibold text-left w-full text-darkShade">{`${label.get_time} год. - ${label.description}.`}</p>

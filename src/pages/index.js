@@ -33,7 +33,7 @@ export default function Home({ list, gospel, news, history }) {
               />
             </div>
 
-            <div className="ml-5 md:ml-0 flex-col items-center self-center text-left">
+            <div className="w-1/2 lg:w-full ml-5 md:ml-0 flex-col items-center self-center text-left">
               <h1
                 className="w-full mx-auto py-2 flex items-center justify-center
                  text-center overflow-hidden sm:py-0
@@ -54,7 +54,8 @@ export default function Home({ list, gospel, news, history }) {
               <OneList doc={list} />
               <div className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]">
                 <ul className="border-b border-twilightBlue-400 mb-2 font-bold text-left w-full text-darkShade ist-disc max-w-md space-y-1">
-                  <li>{"Настоятель храму о. Павло Фіцай"}</li>
+                  <li>Настоятель храму </li>
+                  <li>о. Павло Фіцай</li>
                   <li>
                     <a href={`tel:0667303179`}>моб. 0667303179</a>
                   </li>
@@ -68,7 +69,7 @@ export default function Home({ list, gospel, news, history }) {
         <Layout className="pt-16 sm:pt-8">
           <Hstyle text="Розклад" />
           <div className="mt-5 sm:w-full">
-            <Timetable text="start" doc={list} hiding={true} />
+            <Timetable state="center" doc={list} hiding={true} />
           </div>
         </Layout>
       </main>

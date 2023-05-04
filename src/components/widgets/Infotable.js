@@ -65,9 +65,9 @@ const Infotable = ({
                           path_p: pathPage,
                         },
                       }}
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline md:text-sm"
+                      className="block w-full rounded-md bg-light1 px-3.5 py-2.5 text-center text-sm font-semibold text-stone-600 shadow-sm hover:border-hadfieldBlueLite border-4 border-solid hover:text-white hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
                     >
-                      читати далі.
+                      Читати далі...
                     </Link>
                   </div>
                   <div
