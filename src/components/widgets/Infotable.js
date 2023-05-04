@@ -1,5 +1,5 @@
 import React from "react";
-import {handleDeleteImagePage} from "../helpers/Servise";
+import { handleDeleteImagePage } from "../helpers/Servise";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -14,7 +14,6 @@ const Infotable = ({
   router,
   hiding,
 }) => {
- 
   const { data } = useSession();
 
   const deleteTodo = async (todoId) => {
@@ -34,78 +33,76 @@ const Infotable = ({
 
   return (
     <>
-      <div className="mt-5 sm:w-full">
+      <div className="mt-5 grid">
         {postsS.map((document) => (
           <div key={document._id}>
-            <div className="mt-10 mb-5 relative">
-              <ul className="w-full flex flex-col items-start justify-between">
-                <div className="flex items-center justify-between md:inline-block">
+            <div className="col-span-12">
+              <article className="w-full flex items-center justify-between p-7 lg:flex-col lg:p-8 xs:p-4">
+                <div className="w-1/2 lg:w-full">
                   <Image
                     src={document.imageUrl}
                     width={100}
                     height={100}
                     alt="Uploaded Image"
-                    className="w-1/4 md:w-full h-auto inline-block"
+                    className="w-full h-auto"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="ml-1.5 md:ml-0">
-                    <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
-                      {document._title}
-                    </h3>
-                    <div className="">
-                      <div className="container">
-                        <p className="text-justify font-normal text-stone-600 break-words multiline-ellipsis">
-                          {document.text}
-                        </p>
+                </div>
+                <ul className="w-1/2 lg:w-full flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
+                  <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
+                    {document._title}
+                  </h3>
+                  <div className="container">
+                    <p className="text-justify font-normal text-stone-600 break-words multiline-ellipsis">
+                      {document.text}
+                    </p>
+                    <Link
+                      href={{
+                        pathname: "/read-data",
+                        query: {
+                          name_coll: collection,
+                          doc: document._id,
+                          path_p: pathPage,
+                        },
+                      }}
+                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline md:text-sm"
+                    >
+                      читати далі.
+                    </Link>
+                  </div>
+                  <div
+                    className={`w-full mt-7 flex justify-around md:justify-between ${
+                      hiding ? "invisible" : "visible"
+                    }`}
+                  >
+                    {data?.user ? (
+                      <>
                         <Link
                           href={{
-                            pathname: "/read-data",
+                            pathname: pathN,
                             query: {
-                              name_coll: collection,
                               doc: document._id,
                               path_p: pathPage,
                             },
                           }}
-                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline md:text-sm"
+                          className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
                         >
-                          читати далі.
+                          Обновити
                         </Link>
-                      </div>
-                      <div
-                        className={`w-full mt-7 flex justify-between ${
-                          hiding ? "invisible" : "visible"
-                        }`}
-                      >
-                        {data?.user ? (
-                          <>
-                            <Link
-                              href={{
-                                pathname: pathN,
-                                query: {
-                                  doc: document._id,
-                                  path_p: pathPage,
-                                },
-                              }}
-                              className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
-                            >
-                              Обновити
-                            </Link>
-                            <button
-                              onClick={() => {
-                                deleteTodo(document._id);
-                                handleDeleteImagePage(document.imageUrl);
-                              }}
-                              className="text-white shadow-sm bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md"
-                            >
-                              Видалити
-                            </button>
-                          </>
-                        ) : null}
-                      </div>
-                    </div>
+                        <button
+                          onClick={() => {
+                            deleteTodo(document._id);
+                            handleDeleteImagePage(document.imageUrl);
+                          }}
+                          className="text-white shadow-sm bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md"
+                        >
+                          Видалити
+                        </button>
+                      </>
+                    ) : null}
                   </div>
-                </div>
-              </ul>
+                </ul>
+              </article>
             </div>
             <div className="w-full mx-auto py-3 flex items-center justify-center" />
           </div>
