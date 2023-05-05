@@ -29,8 +29,6 @@ export default function FormGospelUpdate({ list, path_p }) {
 
 export async function getServerSideProps(context) {
   try {
-    console.log(context.query.path_p + " getServerSideProps");
-    console.log(context.query.doc + " getServerSideProps");
     const { db } = await connectToDatabase();
     const list = await db.collection("List_Gospel").findOne({
       _id: new ObjectId(context.query.doc),

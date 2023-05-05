@@ -187,6 +187,7 @@ export async function getServerSideProps() {
 
     const history = await db.collection("History").find({}).toArray();
 
+    
     return {
       props: {
         list: JSON.parse(JSON.stringify(list)),

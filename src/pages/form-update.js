@@ -2,10 +2,10 @@ import Head from "next/head";
 import React from "react";
 import Layout from "@/components/Layout";
 import { connectToDatabase } from "../../lib/mongodb";
+import { ObjectId } from "mongodb";
 import UpdateGraphForm from "@/components/form/UpdateGraphForm";
 
 export default function FormUpdate({ list }) {
-
   return (
     <>
       <Head>
@@ -32,13 +32,11 @@ export default function FormUpdate({ list }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(context.query.doc);
   try {
     const { db } = await connectToDatabase();
     const list = await db.collection("List_Day").findOne({
-      _day: context.query.doc,
+      _id: new ObjectId(context.query.doc),
     });
-    console.log(list);
     return {
       props: { list: JSON.parse(JSON.stringify(list)) },
     };

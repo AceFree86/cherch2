@@ -4,6 +4,7 @@ import { Upload } from "../helpers/Icons";
 import { handleDeleteImage } from "../helpers/Servise";
 import DefaultImage from "../../../public/images/default-image-url.jpg";
 import Image from "next/image";
+import Link from "next/link";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
 
 const UpdateNewsForm = ({ initialValues, page }) => {
@@ -80,8 +81,8 @@ const UpdateNewsForm = ({ initialValues, page }) => {
               for="dropzone-file"
               className={`flex flex-col items-center justify-center w-full h-64 border-2
              border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 mt-5 ${
-                 !uploadImage ? "visible" : "hidden"
-               }`}
+               !uploadImage ? "visible" : "hidden"
+             }`}
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <Upload />
@@ -91,9 +92,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
                   </span>
                   &nbsp;або перетягнути та впусти
                 </p>
-                <p className="text-xs text-gray-500">
-                  SVG, PNG, JPG or GIF.
-                </p>
+                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF.</p>
               </div>
               <input
                 id="dropzone-file"
@@ -136,17 +135,24 @@ const UpdateNewsForm = ({ initialValues, page }) => {
             id="message"
             value={textData}
             onChange={(e) => setTextData(e.target.value)}
+            rows={10}
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
             placeholder={"Напишіть текст..."}
           />
-
-          <div className="mt-10">
+          <div className="mt-10 flex justify-between">
             <button
               type="submit"
-              className="block w-full rounded-md bg-hadfieldBlue px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
+              className="block w-min rounded-md bg-hadfieldBlue px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
             >
               Зберегти
             </button>
+
+            <Link
+              href={page}
+              className="block w-min rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Назат
+            </Link>
           </div>
         </form>
       </div>

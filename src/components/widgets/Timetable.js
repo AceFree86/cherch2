@@ -103,7 +103,7 @@ const Timetable = ({ state, doc, hiding }) => {
                       href={{
                         pathname: `/form-update`,
                         query: {
-                          doc: document._day,
+                          doc: document._id,
                         },
                       }}
                       className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
