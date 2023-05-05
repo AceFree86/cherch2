@@ -44,7 +44,7 @@ const Infotable = ({
                     width={100}
                     height={100}
                     alt="Uploaded Image"
-                    className="w-auto h-auto"
+                    className="w-auto h-auto lg:w-full"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>

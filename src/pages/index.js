@@ -1,5 +1,4 @@
-import React from "react";
-import { connectToDatabase } from "../../lib/mongodb";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Layout from "@/components/Layout";
@@ -8,7 +7,29 @@ import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
 
-export default function Home({ list, gospel, news, history }) {
+export default function Home() {
+  const [list, setList] = useState([]);
+  const [gospel, setGospel] = useState([]);
+  const [news, setNews] = useState([]);
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch("/api/listdata");
+        const { list, gospel, news, history } = await res.json();
+        setList(list);
+        setGospel(gospel);
+        setNews(news);
+        setHistory(history);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -145,58 +166,4 @@ export default function Home({ list, gospel, news, history }) {
       </section>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const { db } = await connectToDatabase();
-    const list = await db
-      .collection("List_Day")
-      .aggregate([
-        {
-          $addFields: {
-            dayAsDate: {
-              $dateFromString: {
-                dateString: "$_day",
-                format: "%d.%m.%Y",
-              },
-            },
-          },
-        },
-        {
-          $sort: {
-            dayAsDate: 1,
-          },
-        },
-      ])
-      .toArray();
-
-    const gospel = await db
-      .collection("List_Gospel")
-      .find({})
-      .limit(1)
-      .sort({ $natural: -1 })
-      .toArray();
-
-    const news = await db
-      .collection("List_News")
-      .find({})
-      .limit(2)
-      .sort({ $natural: -1 })
-      .toArray();
-
-    const history = await db.collection("History").find({}).toArray();
-
-    
-    return {
-      props: {
-        list: JSON.parse(JSON.stringify(list)),
-        gospel: JSON.parse(JSON.stringify(gospel)),
-        news: JSON.parse(JSON.stringify(news)),
-        history: JSON.parse(JSON.stringify(history)),
-      },
-    };
-  } catch (e) {
-    console.error(e);
-  }
 }
