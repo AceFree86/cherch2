@@ -1,7 +1,7 @@
 import { connectToDatabase } from "../../../../lib/mongodb";
 
 
-async function getData(res) {
+async function getData(req, res) {
   try {
     const { db } = await connectToDatabase();
 
