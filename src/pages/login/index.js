@@ -10,10 +10,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
