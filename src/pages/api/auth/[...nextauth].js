@@ -10,8 +10,7 @@ export default NextAuth({
   },
   providers: [
     CredentialsProvider({
-      async authorize(credentials, req) {
-        console.log("NextAuth");
+      async authorize(credentials) {
         const { email, password } = credentials;
         const { db } = await connectToDatabase();
         const users = db.collection("User_Admin");

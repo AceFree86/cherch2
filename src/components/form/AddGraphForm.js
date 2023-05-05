@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Calender from "../widgets/Calender";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
 
 const AddGraphForm = () => {
@@ -72,7 +73,7 @@ const AddGraphForm = () => {
         <input
           type="text"
           aria-describedby="helper-text-explanation"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
           placeholder="Важливість дня (необов'язково):"
           value={stateDay}
           onChange={(e) => setStateDay(e.target.value)}
@@ -80,7 +81,7 @@ const AddGraphForm = () => {
         <input
           type="text"
           aria-describedby="helper-text-explanation"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
           placeholder="Імена святих"
           value={namesSaints}
           onChange={(e) => setNamesSaints(e.target.value)}
@@ -90,9 +91,9 @@ const AddGraphForm = () => {
             <button
               type="button"
               onClick={handleAddLabel}
-              className="flex items-center rounded-md px-3.5 py-2.5 text-center text-sm font-semibold mt-5 text-white shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
+              className="flex items-center rounded-md px-3.5 py-2.5 text-center text-sm md:text-base mt-5 text-white shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue md:font-bold"
             >
-              Додати колонку годин і опису
+              Додати допис
             </button>
           </div>
 
@@ -104,7 +105,7 @@ const AddGraphForm = () => {
               <input
                 type="text"
                 aria-describedby="helper-text-explanation"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5"
                 placeholder="годи"
                 value={label.get_time}
                 onChange={(e) =>
@@ -115,7 +116,7 @@ const AddGraphForm = () => {
               <input
                 type="text"
                 aria-describedby="helper-text-explanation"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-8/12 p-2.5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-8/12 p-2.5"
                 placeholder="Опис події"
                 value={label.description}
                 onChange={(e) =>
@@ -126,7 +127,7 @@ const AddGraphForm = () => {
                 <button
                   type="button"
                   onClick={handleDeleteLabel}
-                  className="sm:mt-5 sm:w-full block  items-center rounded-md bg-red-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-red-500"
+                  className="sm:mt-5 sm:w-full block items-center rounded-md bg-red-600 px-3 py-2 text-sm md:text-base text-white shadow-sm hover:bg-red-500 md:font-bold"
                 >
                   Видалити
                 </button>
@@ -134,13 +135,19 @@ const AddGraphForm = () => {
             </div>
           ))}
         </div>
-        <div className="mt-10">
+        <div className="mt-10 flex justify-between">
           <button
             type="submit"
-            className="block w-full rounded-md bg-hadfieldBlue px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
+            className="block w-min rounded-md text-sm md:text-base bg-hadfieldBlue px-3.5 py-2.5 text-center text-white hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue md:font-bold"
           >
             Зберегти
           </button>
+          <Link
+            href="/schedule"
+            className="block w-min rounded-md text-sm md:text-base bg-indigo-600 px-3.5 py-2.5 text-center text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:font-bold"
+          >
+            Назат
+          </Link>
         </div>
       </form>
     </>

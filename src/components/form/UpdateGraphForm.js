@@ -78,7 +78,7 @@ const UpdateGraphForm = ({ initialValues }) => {
         <input
           type="text"
           aria-describedby="helper-text-explanation"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
+          className="bg-gray-50 border border-gray-300 text-sm md:text-base text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
           placeholder="Важливість дня (необов'язково):"
           value={stateDay}
           onChange={(e) => setStateDay(e.target.value)}
@@ -86,7 +86,7 @@ const UpdateGraphForm = ({ initialValues }) => {
         <input
           type="text"
           aria-describedby="helper-text-explanation"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
+          className="bg-gray-50 border border-gray-300 text-sm md:text-base text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
           placeholder="Імена святих"
           value={namesSaints}
           onChange={(e) => setNamesSaints(e.target.value)}
@@ -96,9 +96,9 @@ const UpdateGraphForm = ({ initialValues }) => {
             <button
               type="button"
               onClick={handleAddLabel}
-              className="flex items-center rounded-md px-3.5 py-2.5 text-center text-sm font-semibold mt-5 text-white shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
+              className="text-white mt-5 shadow-sm text-sm md:text-base bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue px-3 py-2 rounded-md"
             >
-              Додати опис
+              Додати допис
             </button>
           </div>
 
@@ -110,7 +110,7 @@ const UpdateGraphForm = ({ initialValues }) => {
               <input
                 type="text"
                 aria-describedby="helper-text-explanation"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5"
+                className="bg-gray-50 border border-gray-300 text-sm md:text-base text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5"
                 placeholder="годи"
                 value={label.get_time}
                 onChange={(e) =>
@@ -121,7 +121,7 @@ const UpdateGraphForm = ({ initialValues }) => {
               <input
                 type="text"
                 aria-describedby="helper-text-explanation"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-8/12 p-2.5"
+                className="bg-gray-50 border border-gray-300 text-sm md:text-base text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-8/12 p-2.5"
                 placeholder="Опис події"
                 value={label.description}
                 onChange={(e) =>
@@ -132,7 +132,7 @@ const UpdateGraphForm = ({ initialValues }) => {
                 <button
                   type="button"
                   onClick={handleDeleteLabel}
-                  className="sm:mt-5 sm:w-full block  items-center rounded-md bg-red-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-red-500"
+                  className="sm:mt-5 sm:w-full text-white shadow-sm text-sm md:text-base bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 px-3 py-2 rounded-md md:font-bold"
                 >
                   Видалити
                 </button>
@@ -144,14 +144,14 @@ const UpdateGraphForm = ({ initialValues }) => {
           <button
             type="button"
             onClick={handleSubmit}
-            className="block w-min rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="text-white shadow-sm text-sm md:text-base bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue px-3 py-2 rounded-md md:font-bold"
           >
             Зберегти
           </button>
 
           <Link
             href="/schedule"
-            className="block w-min rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="block text-white shadow-sm text-sm md:text-base bg-indigo-600 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 px-3 py-2 rounded-md md:font-bold"
           >
             Назат
           </Link>

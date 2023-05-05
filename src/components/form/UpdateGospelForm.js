@@ -56,7 +56,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
         method: "PUT",
         body: JSON.stringify({ id, body: news }),
       });
-      showSuccessToast("УСПІХ: збережено!");
+      showSuccessToast("Успіх: збережено!");
       router.push(page);
     } catch (error) {
       showErrorToast("Помилка: не вдалося зберегти.");
@@ -71,7 +71,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
           <input
             type="text"
             aria-describedby="helper-text-explanation"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
+            className="bg-gray-50 border border-gray-300 text-sm md:text-base text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5 md:font-bold"
             placeholder="Заголовок"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -107,7 +107,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
                 alt="Uploaded Image"
                 width={50}
                 height={50}
-                className={`w-full h-auto inline-block ${
+                className={`w-auto h-auto inline-block ${
                   !uploadImage ? "hidden" : "visible mt-5"
                 }`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -122,7 +122,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
                     resetFileInput
                   )
                 }
-                className={`w-full block  items-center rounded-md bg-red-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-red-500 ${
+                className={`w-full block items-center rounded-md text-sm md:text-base bg-red-600 px-3 py-2 text-white shadow-sm hover:bg-red-500 md:font-bold ${
                   !uploadImage ? "hidden" : "visible mt-5"
                 }`}
               >
@@ -135,21 +135,20 @@ const UpdateNewsForm = ({ initialValues, page }) => {
             value={textData}
             onChange={(e) => setTextData(e.target.value)}
             rows={10}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
+            className="block p-2.5 w-full text-gray-900 text-sm md:text-base bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
             placeholder={"Напишіть текст..."}
           />
 
           <div className="mt-10 flex justify-between">
             <button
               type="submit"
-              className="block w-min rounded-md bg-hadfieldBlue px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
+              className="block w-min rounded-md text-sm md:text-base bg-hadfieldBlue px-3.5 py-2.5 text-center text-white hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue md:font-bold"
             >
               Зберегти
             </button>
-
             <Link
               href={page}
-              className="block w-min rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="block w-min rounded-md text-sm md:text-base bg-indigo-600 px-3.5 py-2.5 text-center text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:font-bold"
             >
               Назат
             </Link>

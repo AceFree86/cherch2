@@ -12,7 +12,7 @@ const Details = ({ title, text }) => {
         <ul className="list-disc md:list-none max-w-md space-y-1">
           {text.map((label) => (
             <li key={label.get_time}>
-              <p className="mb-2 font-semibold text-left w-full text-darkShade">{`${label.get_time} год. - ${label.description}.`}</p>
+              <p className="border-b border-white mb-2 font-semibold text-left w-full text-darkShade">{`${label.get_time} год. - ${label.description}.`}</p>
             </li>
           ))}
         </ul>

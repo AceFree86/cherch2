@@ -31,11 +31,11 @@ export default function FormUpdate({ list }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query }) {
   try {
     const { db } = await connectToDatabase();
     const list = await db.collection("List_Day").findOne({
-      _id: new ObjectId(context.query.doc),
+      _id: new ObjectId(query.doc),
     });
     return {
       props: { list: JSON.parse(JSON.stringify(list)) },

@@ -8,6 +8,7 @@ import {
 import { useRouter } from "next/router";
 import DefaultImage from "../../../public/images/default-image-url.jpg";
 import Image from "next/image";
+import Link from "next/link";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
 
 const AddGospelForm = () => {
@@ -80,7 +81,7 @@ const AddGospelForm = () => {
           <input
             type="text"
             aria-describedby="helper-text-explanation"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5"
             placeholder="Заголовок"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -140,7 +141,7 @@ const AddGospelForm = () => {
                     resetFileInput
                   )
                 }
-                className={`w-full block  items-center rounded-md bg-red-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-red-500 mt-5 ${
+                className={`w-full block  items-center rounded-md bg-red-600 px-3 py-2 text-sm md:text-base text-white shadow-sm hover:bg-red-500 mt-5 md:font-bold ${
                   !uploadImage ? "hidden" : "visible"
                 }`}
               >
@@ -153,16 +154,22 @@ const AddGospelForm = () => {
             value={textData}
             onChange={(e) => setTextData(e.target.value)}
             rows={calculateRows(textData)}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
+            className="block p-2.5 w-full text-sm md:text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
             placeholder="Напишіть текст..."
           />
-          <div className="mt-10">
+          <div className="mt-10 flex justify-between">
             <button
               type="submit"
-              className="block w-full rounded-md bg-hadfieldBlue px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
+              className="block w-min rounded-md text-sm md:text-base bg-hadfieldBlue px-3.5 py-2.5 text-center font-semibold text-white hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue md:font-bold"
             >
               Зберегти
             </button>
+            <Link
+              href="/gospel"
+              className="block w-min rounded-md text-sm md:text-base bg-indigo-600 px-3.5 py-2.5 text-center font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Назат
+            </Link>
           </div>
         </form>
       </div>

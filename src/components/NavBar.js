@@ -88,7 +88,7 @@ const NavBar = () => {
         ></span>
       </button>
 
-      <div className="absolute left-[50%] top-2 xl:ml-1 translate-x-[-50%]">
+      <div className="absolute left-[50%] md:left-[51%] top-2 xl:ml-1 translate-x-[-50%]">
         <Logo />
       </div>
 

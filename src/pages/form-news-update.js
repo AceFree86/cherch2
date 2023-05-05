@@ -27,16 +27,16 @@ export default function FormNewsUpdate({ list, path_p }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query }) {
   try {
     const { db } = await connectToDatabase();
     const list = await db.collection("List_News").findOne({
-      _id: new ObjectId(context.query.doc),
+      _id: new ObjectId(query.doc),
     });
     return {
       props: {
         list: JSON.parse(JSON.stringify(list)),
-        path_p: context.query.path_p,
+        path_p: query.path_p,
       },
     };
   } catch (e) {

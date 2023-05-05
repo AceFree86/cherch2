@@ -60,7 +60,7 @@ export default function Gospel({ list, currentPage, numPages }) {
               <>
                 <Link
                   href="/form-gospel-add"
-                  className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
+                  className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white py-2 px-4 rounded-md md:font-bold"
                 >
                   Додати
                 </Link>

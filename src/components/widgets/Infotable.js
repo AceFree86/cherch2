@@ -44,7 +44,7 @@ const Infotable = ({
                     width={100}
                     height={100}
                     alt="Uploaded Image"
-                    className="w-full h-auto"
+                    className="w-auto h-auto"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
@@ -56,20 +56,20 @@ const Infotable = ({
                     <p className="text-justify font-normal text-stone-600 break-words multiline-ellipsis">
                       {document.text}
                     </p>
-                    <Link
-                      href={{
-                        pathname: "/read-data",
-                        query: {
-                          name_coll: collection,
-                          doc: document._id,
-                          path_p: pathPage,
-                        },
-                      }}
-                      className="block w-full rounded-md bg-light1 px-3.5 py-2.5 text-center text-sm font-semibold text-stone-600 shadow-sm hover:border-hadfieldBlueLite border-4 border-solid hover:text-white hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue"
-                    >
-                      Читати далі...
-                    </Link>
                   </div>
+                  <Link
+                    href={{
+                      pathname: "/read-data",
+                      query: {
+                        name_coll: collection,
+                        doc: document._id,
+                        path_p: pathPage,
+                      },
+                    }}
+                    className="px-3.5 py-2.5 mt-1 rounded-md bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border border-blue-500 hover:border-transparent"
+                  >
+                    Читати далі...
+                  </Link>
                   <div
                     className={`w-full mt-7 flex justify-around md:justify-between ${
                       hiding ? "invisible" : "visible"
@@ -85,7 +85,7 @@ const Infotable = ({
                               path_p: pathPage,
                             },
                           }}
-                          className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
+                          className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white md:font-bold py-2 px-4 rounded-md"
                         >
                           Обновити
                         </Link>
@@ -94,7 +94,7 @@ const Infotable = ({
                             deleteTodo(document._id);
                             handleDeleteImagePage(document.imageUrl);
                           }}
-                          className="text-white shadow-sm bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md"
+                          className="text-white shadow-sm text-sm md:text-base bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md md:font-bold"
                         >
                           Видалити
                         </button>

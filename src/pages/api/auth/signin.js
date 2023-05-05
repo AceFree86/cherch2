@@ -7,7 +7,6 @@ export default async function sign(req, res) {
       email: req.body.email,
       password: req.body.password,
     });
-    console.log(data + " signIn");
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json({ error: error.message });

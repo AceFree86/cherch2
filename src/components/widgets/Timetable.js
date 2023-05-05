@@ -25,7 +25,7 @@ const Details = ({ title, text, state }) => {
         <ul className="list-disc md:list-none max-w-md space-y-1">
           {text.map((label) => (
             <li key={label.get_time}>
-              <p className="border-b border-twilightBlue-400 mb-2 font-semibold text-left w-full text-darkShade">
+              <p className="border-b border-twilightBlue-500 mb-2 font-semibold text-left w-full text-darkShade">
                 {`${label.get_time} год. - ${label.description}.`}
               </p>
             </li>
@@ -93,8 +93,8 @@ const Timetable = ({ state, doc, hiding }) => {
                 state={state}
               />
               <div
-                className={`w-full mb-7 flex justify-around ${
-                  hiding ? "invisible" : "visible"
+                className={`w-full flex justify-around ${
+                  hiding ? "invisible mb-0 mt-0" : "visible mb-7"
                 }`}
               >
                 {data?.user ? (
@@ -106,13 +106,13 @@ const Timetable = ({ state, doc, hiding }) => {
                           doc: document._id,
                         },
                       }}
-                      className="shadow-sm bg-hadfieldBlue hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white font-bold py-2 px-4 rounded-md"
+                      className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white md:font-bold py-2 px-4 rounded-md"
                     >
                       {"Обновити"}
                     </Link>
                     <button
                       onClick={() => deleteTodo(document._id)}
-                      className="text-white shadow-sm bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md"
+                      className="text-white shadow-sm text-sm md:text-base bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md md:font-bold"
                     >
                       {"Видалити"}
                     </button>
