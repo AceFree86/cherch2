@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { connectToDatabase } from "../../lib/mongodb";
 import Head from "next/head";
 import Image from "next/image";
 import Layout from "@/components/Layout";
@@ -7,37 +7,78 @@ import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
 
-export default function Home() {
-  const [list, setList] = useState([]);
-  const [todayList, setTodayList] = useState([]);
-  const [gospel, setGospel] = useState([]);
-  const [news, setNews] = useState([]);
-  const [history, setHistory] = useState([]);
+export const getStaticProps = async () => {
+  try {
+    const { db } = await connectToDatabase();
 
-  useEffect(() => {
-    let didCancel = false;
-    async function fetchData() {
-      if (!didCancel) {
-        try {
-          const res = await fetch("/api/list");
-          const { list, todayList, gospel, news, history } = await res.json();
-          setList(list);
-          setTodayList(todayList);
-          setGospel(gospel);
-          setNews(news);
-          setHistory(history);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    }
+    const list = await db
+      .collection("List_Day")
+      .aggregate([
+        {
+          $addFields: {
+            dayAsDate: {
+              $dateFromString: {
+                dateString: "$_day",
+                format: "%d.%m.%Y",
+              },
+            },
+          },
+        },
+        {
+          $sort: {
+            dayAsDate: 1,
+          },
+        },
+      ])
+      .toArray();
 
-    fetchData();
-    return () => {
-      didCancel = true;
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const year = today.getFullYear();
+    const formattedToday = `${day}.${month}.${year}`;
+
+    const filteredList = list.filter((post) => post._day === formattedToday);
+
+    const gospel = await db
+      .collection("List_Gospel")
+      .find({})
+      .limit(1)
+      .sort({ $natural: -1 })
+      .toArray();
+
+    const news = await db
+      .collection("List_News")
+      .find({})
+      .limit(2)
+      .sort({ $natural: -1 })
+      .toArray();
+
+    const history = await db.collection("History").find({}).toArray();
+
+    return {
+      props: {
+        todayList: JSON.parse(JSON.stringify(filteredList)),
+        list: JSON.parse(JSON.stringify(list)),
+        gospel: JSON.parse(JSON.stringify(gospel)),
+        news: JSON.parse(JSON.stringify(news)),
+        history: JSON.parse(JSON.stringify(history)),
+      },
     };
-  }, []);
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        list: [],
+        gospel: [],
+        news: [],
+        history: [],
+      },
+    };
+  }
+};
 
+export default function Home({todayList, list, gospel, news, history }) {
   return (
     <>
       <Head>

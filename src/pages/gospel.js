@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import { connectToDatabase } from "../../lib/mongodb";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,30 +8,42 @@ import Infotable from "@/components/widgets/Infotable";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
 
-export default function Gospel() {
-  const [currentPag, setCurrentPage] = useState(1);
-  const [postsState, setPostsState] = useState([]);
-  const [numPages, setNumPages] = useState(0);
+
+export async function getServerSideProps({ query }) {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = await db.collection("List_Gospel");
+
+    const page = query.page ? parseInt(query.page) : 1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
+
+    const list = await collection
+      .find()
+      .skip(skip)
+      .sort({ _id: -1 })
+      .limit(limit)
+      .toArray();
+    const total = await collection.countDocuments();
+    const numPages = Math.ceil(total / limit);
+
+    return {
+      props: {
+        list: JSON.parse(JSON.stringify(list)),
+        currentPage: page,
+        numPages,
+      },
+    };
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export default function Gospel({ list, currentPage, numPages }) {
+  const [currentPag, setCurrentPage] = useState(currentPage);
   const { data } = useSession();
   const router = useRouter();
   const pathPage = router.asPath;
-
-  useEffect(() => {
-     let didCancel = false;
-    async function fetchData() {
-      if (!didCancel) {
-      const res = await fetch(`/api/gospel?page=${currentPag}`);
-      const data = await res.json();
-      setPostsState(data.list);
-      setCurrentPage(data.currentPage);
-      setNumPages(data.numPages);
-      }
-    }
-    fetchData();
-     return () => {
-       didCancel = true;
-     };
-  }, [currentPag]);
 
   const handleClick = (page) => {
     setCurrentPage(page);
@@ -72,7 +85,7 @@ export default function Gospel() {
             ) : null}
           </div>
           <Infotable
-            postsS={postsState}
+            postsS={list}
             collection={"List_Gospel"}
             pathPage={pathPage}
             pathN={"/form-gospel-update"}

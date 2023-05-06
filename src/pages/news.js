@@ -8,30 +8,41 @@ import Link from "next/link";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
 
-export default function News() {
-  const [currentPag, setCurrentPage] = useState(1);
-  const [postsState, setPostsState] = useState([]);
-  const [numPages, setNumPages] = useState(0);
-  const { data } = useSession();
-  const router = useRouter();
-  const pathPage = router.asPath;
+export async function getServerSideProps({ query }) {
+  try {
+    const { db } = await connectToDatabase();
+    const collection = await db.collection("List_News");
 
-  useEffect(() => {
-    let didCancel = false;
-    async function fetchData() {
-      if (!didCancel) {
-        const res = await fetch(`/api/news?page=${currentPag}`);
-        const data = await res.json();
-        setPostsState(data.list);
-        setCurrentPage(data.currentPage);
-        setNumPages(data.numPages);
-      }
-    }
-    fetchData();
-    return () => {
-      didCancel = true;
+    const page = query.page ? parseInt(query.page) : 1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
+
+    const list = await collection
+      .find()
+      .skip(skip)
+      .sort({ _date: -1 })
+      .limit(limit)
+      .toArray();
+    const total = await collection.countDocuments();
+    const numPages = Math.ceil(total / limit);
+
+    return {
+      props: {
+        list: JSON.parse(JSON.stringify(list)),
+        currentPage: page,
+        numPages,
+      },
     };
-  }, [currentPag]);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export default function News({ list, currentPage, numPages }) {
+ const [currentPag, setCurrentPage] = useState(currentPage);
+ const { data } = useSession();
+ const router = useRouter();
+ const pathPage = router.asPath;
 
   const handleClick = (page) => {
     setCurrentPage(page);
@@ -73,7 +84,7 @@ export default function News() {
             ) : null}
           </div>
           <Infotable
-            postsS={postsState}
+            postsS={list}
             collection={"List_News"}
             pathPage={pathPage}
             pathN={"/form-news-update"}
@@ -125,34 +136,4 @@ export default function News() {
       </main>
     </>
   );
-}
-
-export async function getServerSideProps({ query }) {
-  try {
-    const { db } = await connectToDatabase();
-    const collection = await db.collection("List_News");
-
-    const page = query.page ? parseInt(query.page) : 1;
-    const limit = 10;
-    const skip = (page - 1) * limit;
-
-    const list = await collection
-      .find()
-      .skip(skip)
-      .sort({ _date: -1 })
-      .limit(limit)
-      .toArray();
-    const total = await collection.countDocuments();
-    const numPages = Math.ceil(total / limit);
-
-    return {
-      props: {
-        list: JSON.parse(JSON.stringify(list)),
-        currentPage: page,
-        numPages,
-      },
-    };
-  } catch (e) {
-    console.error(e);
-  }
 }

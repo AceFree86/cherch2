@@ -7,6 +7,38 @@ import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import Timetable from "@/components/widgets/Timetable";
 
+export const getStaticProps = async () => {
+  try {
+    const { db } = await connectToDatabase();
+    const list = await db
+      .collection("List_Day")
+      .aggregate([
+        {
+          $addFields: {
+            dayAsDate: {
+              $dateFromString: {
+                dateString: "$_day",
+                format: "%d.%m.%Y",
+              },
+            },
+          },
+        },
+        {
+          $sort: {
+            dayAsDate: 1,
+          },
+        },
+      ])
+      .toArray();
+
+    return {
+      props: { list: JSON.parse(JSON.stringify(list)) },
+    };
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 export default function Schedule({ list }) {
   const { data } = useSession();
   return (
@@ -40,36 +72,4 @@ export default function Schedule({ list }) {
       </main>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const { db } = await connectToDatabase();
-    const list = await db
-      .collection("List_Day")
-      .aggregate([
-        {
-          $addFields: {
-            dayAsDate: {
-              $dateFromString: {
-                dateString: "$_day",
-                format: "%d.%m.%Y",
-              },
-            },
-          },
-        },
-        {
-          $sort: {
-            dayAsDate: 1,
-          },
-        },
-      ])
-      .toArray();
-
-    return {
-      props: { list: JSON.parse(JSON.stringify(list)) },
-    };
-  } catch (e) {
-    console.error(e);
-  }
 }
