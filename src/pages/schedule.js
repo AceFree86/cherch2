@@ -57,7 +57,12 @@ export default function Schedule({ list }) {
             {data?.user ? (
               <>
                 <Link
-                  href="/form-add"
+                  href={{
+                    pathname: "/form-add",
+                    query: {
+                      form: "",
+                    },
+                  }}
                   className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white py-2 px-4 rounded-md md:font-bold"
                 >
                   Додати

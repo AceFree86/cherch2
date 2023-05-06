@@ -39,10 +39,10 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function News({ list, currentPage, numPages }) {
- const [currentPag, setCurrentPage] = useState(currentPage);
- const { data } = useSession();
- const router = useRouter();
- const pathPage = router.asPath;
+  const [currentPag, setCurrentPage] = useState(currentPage);
+  const { data } = useSession();
+  const router = useRouter();
+  const pathPage = router.asPath;
 
   const handleClick = (page) => {
     setCurrentPage(page);
@@ -75,7 +75,12 @@ export default function News({ list, currentPage, numPages }) {
             {data?.user ? (
               <>
                 <Link
-                  href="/form-news-add"
+                  href={{
+                    pathname: "/form-add",
+                    query: {
+                      form: "news",
+                    },
+                  }}
                   className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white py-2 px-4 rounded-md md:font-bold"
                 >
                   Додати

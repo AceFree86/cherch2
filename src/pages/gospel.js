@@ -8,7 +8,6 @@ import Infotable from "@/components/widgets/Infotable";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
 
-
 export async function getServerSideProps({ query }) {
   try {
     const { db } = await connectToDatabase();
@@ -37,7 +36,7 @@ export async function getServerSideProps({ query }) {
   } catch (e) {
     console.error(e);
   }
-};
+}
 
 export default function Gospel({ list, currentPage, numPages }) {
   const [currentPag, setCurrentPage] = useState(currentPage);
@@ -76,7 +75,12 @@ export default function Gospel({ list, currentPage, numPages }) {
             {data?.user ? (
               <>
                 <Link
-                  href="/form-gospel-add"
+                  href={{
+                    pathname: "/form-add",
+                    query: {
+                      form: "gospel",
+                    },
+                  }}
                   className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white py-2 px-4 rounded-md md:font-bold"
                 >
                   Додати
