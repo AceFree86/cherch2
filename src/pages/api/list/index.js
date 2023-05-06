@@ -1,6 +1,5 @@
 import { connectToDatabase } from "../../../../lib/mongodb";
 
-
 async function getData(req, res) {
   try {
     const { db } = await connectToDatabase();
@@ -26,6 +25,14 @@ async function getData(req, res) {
       ])
       .toArray();
 
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const year = today.getFullYear();
+    const formattedToday = `${day}.${month}.${year}`;
+
+    const filteredList = list.filter((post) => post._day === formattedToday);
+
     const gospel = await db
       .collection("List_Gospel")
       .find({})
@@ -44,6 +51,7 @@ async function getData(req, res) {
 
     res.status(200).json({
       list: JSON.parse(JSON.stringify(list)),
+      todayList: JSON.parse(JSON.stringify(filteredList)),
       gospel: JSON.parse(JSON.stringify(gospel)),
       news: JSON.parse(JSON.stringify(news)),
       history: JSON.parse(JSON.stringify(history)),

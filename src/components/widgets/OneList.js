@@ -1,6 +1,5 @@
 import React from "react";
 import { MyFormattedDate } from "../helpers/Servise";
-import { useMemo } from "react";
 
 const Details = ({ title, text }) => {
   return (
@@ -23,19 +22,9 @@ const Details = ({ title, text }) => {
 };
 
 const OneList = ({ doc }) => {
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, "0");
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const year = today.getFullYear();
-  const formattedToday = `${day}.${month}.${year}`;
-
-  const filteredPosts = useMemo(() => {
-    return doc.filter((post) => post._day === formattedToday);
-  }, [doc, formattedToday]);
-
   return (
     <>
-      {filteredPosts.map((document) => (
+      {doc.map((document) => (
         <div key={document._id}>
           <div className="">
             <ul className="w-full flex flex-col items-start justify-between ml-4">

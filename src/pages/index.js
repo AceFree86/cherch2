@@ -9,25 +9,33 @@ import OneList from "@/components/widgets/OneList";
 
 export default function Home() {
   const [list, setList] = useState([]);
+  const [todayList, setTodayList] = useState([]);
   const [gospel, setGospel] = useState([]);
   const [news, setNews] = useState([]);
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
+    let didCancel = false;
     async function fetchData() {
-      try {
-        const res = await fetch("/api/list");
-        const { list, gospel, news, history } = await res.json();
-        setList(list);
-        setGospel(gospel);
-        setNews(news);
-        setHistory(history);
-      } catch (error) {
-        console.error(error);
+      if (!didCancel) {
+        try {
+          const res = await fetch("/api/list");
+          const { list, todayList, gospel, news, history } = await res.json();
+          setList(list);
+          setTodayList(todayList);
+          setGospel(gospel);
+          setNews(news);
+          setHistory(history);
+        } catch (error) {
+          console.error(error);
+        }
       }
     }
 
     fetchData();
+    return () => {
+      didCancel = true;
+    };
   }, []);
 
   return (
@@ -72,7 +80,7 @@ export default function Home() {
                 {"мкр. Дравці"}
               </p>
 
-              <OneList doc={list} />
+              <OneList doc={todayList} />
               <div className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]">
                 <ul className="border-b border-twilightBlue-400 mb-2 font-bold text-left w-full text-darkShade ist-disc max-w-md space-y-1">
                   <li>Настоятель храму </li>
