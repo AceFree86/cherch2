@@ -126,7 +126,7 @@ const AddGraphForm = () => {
               {labels.length > 1 && (
                 <button
                   type="button"
-                  onClick={handleDeleteLabel}
+                  onClick={() => handleDeleteLabel(index)}
                   className="sm:mt-5 sm:w-full block items-center rounded-md bg-red-600 px-3 py-2 text-sm md:text-base text-white shadow-sm hover:bg-red-500 md:font-bold"
                 >
                   Видалити

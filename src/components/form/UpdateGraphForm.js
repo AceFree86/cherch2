@@ -131,7 +131,7 @@ const UpdateGraphForm = ({ initialValues }) => {
               {labels.length > 1 && (
                 <button
                   type="button"
-                  onClick={handleDeleteLabel}
+                  onClick={() => handleDeleteLabel(index)}
                   className="sm:mt-5 sm:w-full text-white shadow-sm text-sm md:text-base bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 px-3 py-2 rounded-md md:font-bold"
                 >
                   Видалити
