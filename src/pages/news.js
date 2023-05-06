@@ -8,9 +8,10 @@ import Link from "next/link";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
 
-export default function News({ list, currentPage, numPages }) {
-  const [currentPag, setCurrentPage] = useState(currentPage);
+export default function News() {
+  const [currentPag, setCurrentPage] = useState(1);
   const [postsState, setPostsState] = useState([]);
+  const [numPages, setNumPages] = useState(0);
   const { data } = useSession();
   const router = useRouter();
   const pathPage = router.asPath;
@@ -19,28 +20,32 @@ export default function News({ list, currentPage, numPages }) {
     let didCancel = false;
     async function fetchData() {
       if (!didCancel) {
-        setPostsState(list);
+        const res = await fetch(`/api/news?page=${currentPag}`);
+        const data = await res.json();
+        setPostsState(data.list);
+        setCurrentPage(data.currentPage);
+        setNumPages(data.numPages);
       }
     }
     fetchData();
     return () => {
       didCancel = true;
     };
-  }, [list]);
+  }, [currentPag]);
 
   const handleClick = (page) => {
     setCurrentPage(page);
-    router.push(`/gospel?page=${page}`);
+    router.push(`/news?page=${page}`);
   };
 
   const handleNextClick = () => {
     setCurrentPage(currentPag + 1);
-    router.push(`/gospel?page=${currentPag + 1}`);
+    router.push(`/news?page=${currentPag + 1}`);
   };
 
   const handlePrevClick = () => {
     setCurrentPage(currentPag - 1);
-    router.push(`/gospel?page=${currentPag - 1}`);
+    router.push(`/news?page=${currentPag - 1}`);
   };
 
   return (

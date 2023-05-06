@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { useRouter } from "next/router";
 import { showSuccessToast, showErrorToast } from "./Toast";
 import { MyFormattedDate } from "../helpers/Servise";
@@ -22,7 +22,7 @@ const Details = ({ title, text, state }) => {
         >
           {title}
         </h5>
-        <ul className="list-disc md:list-none max-w-md space-y-1">
+        <ul className="list-disc text-royalNavy md:list-none max-w-md space-y-1">
           {text.map((label) => (
             <li key={label.get_time}>
               <p className="border-b border-twilightBlue-500 mb-2 font-semibold text-left w-full text-darkShade">
@@ -39,23 +39,10 @@ const Details = ({ title, text, state }) => {
 const Timetable = ({ state, doc, hiding }) => {
   const router = useRouter();
   const { data } = useSession();
-  const [postsState, setPostsState] = useState([]);
-
-  useEffect(() => {
-    let didCancel = false;
-    async function fetchData() {
-      if (!didCancel) {
-        setPostsState(doc);
-      }
-    }
-    fetchData();
-    return () => {
-      didCancel = true;
-    };
-  }, [doc]);
+  
 
   const deleteTodo = async (todoId) => {
-    const resp = await fetch(`/api/list/delete`, {
+    const resp = await fetch("/api/list/delete", {
       method: "DELETE",
       body: JSON.stringify(todoId),
     });
@@ -78,10 +65,9 @@ const Timetable = ({ state, doc, hiding }) => {
     <div ref={ref} className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
       <motion.div
         style={{ scaleY: scrollYProgress }}
-        className="absolute left-9 top-0 w-[4px] h-full bg-blue-600 origin-top 
-        md:w-[2px] md:left-[30px] xs:left-[20px]"
+        className="absolute left-9 top-0 w-[4px] h-full bg-blue-600 origin-top md:w-[2px] md:left-[30px] xs:left-[20px]"
       />
-      {postsState.map((document) => (
+      {doc.map((document) => (
         <div key={document._id}>
           <div className="flex items-center self-start mt-2 relative">
             <ul className="w-full flex flex-col items-start justify-between ml-4 md:ml-1">

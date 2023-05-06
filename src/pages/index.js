@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/api/listdata");
+        const res = await fetch("/api/list");
         const { list, gospel, news, history } = await res.json();
         setList(list);
         setGospel(gospel);

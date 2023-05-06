@@ -1,5 +1,5 @@
 import { connectToDatabase } from "../../lib/mongodb";
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Hstyle from "@/components/helpers/Hstyle";

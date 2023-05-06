@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { connectToDatabase } from "../../lib/mongodb";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -8,25 +7,30 @@ import Infotable from "@/components/widgets/Infotable";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
 
-export default function Gospel({ list, currentPage, numPages }) {
-  const [currentPag, setCurrentPage] = useState(currentPage);
+export default function Gospel() {
+  const [currentPag, setCurrentPage] = useState(1);
   const [postsState, setPostsState] = useState([]);
+  const [numPages, setNumPages] = useState(0);
   const { data } = useSession();
   const router = useRouter();
   const pathPage = router.asPath;
 
   useEffect(() => {
-    let didCancel = false;
+     let didCancel = false;
     async function fetchData() {
       if (!didCancel) {
-        setPostsState(list);
+      const res = await fetch(`/api/gospel?page=${currentPag}`);
+      const data = await res.json();
+      setPostsState(data.list);
+      setCurrentPage(data.currentPage);
+      setNumPages(data.numPages);
       }
     }
     fetchData();
-    return () => {
-      didCancel = true;
-    };
-  }, [list]);
+     return () => {
+       didCancel = true;
+     };
+  }, [currentPag]);
 
   const handleClick = (page) => {
     setCurrentPage(page);
@@ -39,7 +43,7 @@ export default function Gospel({ list, currentPage, numPages }) {
   };
 
   const handlePrevClick = () => {
-    setCurrentPage(currentPage - 1);
+    setCurrentPage(currentPag - 1);
     router.push(`/gospel?page=${currentPag - 1}`);
   };
 
@@ -120,34 +124,4 @@ export default function Gospel({ list, currentPage, numPages }) {
       </main>
     </>
   );
-}
-
-export async function getServerSideProps({ query }) {
-  try {
-    const { db } = await connectToDatabase();
-    const collection = await db.collection("List_Gospel");
-
-    const page = query.page ? parseInt(query.page) : 1;
-    const limit = 10;
-    const skip = (page - 1) * limit;
-
-    const list = await collection
-      .find()
-      .skip(skip)
-      .sort({ _id: -1 })
-      .limit(limit)
-      .toArray();
-    const total = await collection.countDocuments();
-    const numPages = Math.ceil(total / limit);
-
-    return {
-      props: {
-        list: JSON.parse(JSON.stringify(list)),
-        currentPage: page,
-        numPages,
-      },
-    };
-  } catch (e) {
-    console.error(e);
-  }
 }
