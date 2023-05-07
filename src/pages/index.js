@@ -7,7 +7,7 @@ import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
     const { db } = await connectToDatabase();
 
