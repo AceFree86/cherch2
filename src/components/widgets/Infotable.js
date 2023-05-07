@@ -45,7 +45,9 @@ const Infotable = ({
                     height={100}
                     alt="Uploaded Image"
                     className="w-auto h-auto lg:w-full"
+                    priority={true}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    as={"image"}
                   />
                 </div>
                 <ul className="w-1/2 lg:w-full flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
