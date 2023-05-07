@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "@/components/Layout";
-import { connectToDatabase } from "../../lib/mongodb";
+import { connectToDatabase } from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
 import Hstyle from "@/components/helpers/Hstyle";
 import UpdateGraphForm from "@/components/form/UpdateGraphForm";

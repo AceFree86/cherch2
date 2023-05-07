@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GoogleAnalytics GoogId={process.env.NEXT_PUBLIC_GIDA} />
-      <main className="bg-white w-full min-h-screen">
+      <main className="bg-white w-full min-h-screen md:text-lg">
         <SessionProvider>
           <NavBar />
           <ToastContainer />

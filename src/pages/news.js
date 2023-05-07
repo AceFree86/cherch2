@@ -83,7 +83,7 @@ export default function News({ list, currentPage, numPages }) {
               <>
                 <Link
                   href={{
-                    pathname: "/form-add",
+                    pathname: "/form/add",
                     query: {
                       form: "news",
                     },

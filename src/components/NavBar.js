@@ -61,8 +61,6 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const isActive = (href) => router.asPath === href;
-
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -93,7 +91,7 @@ const NavBar = () => {
         ></span>
       </button>
 
-      <div className="absolute left-[50%] md:left-[49%] xl:left-[50%] top-2 xl:ml-1 translate-x-[-50%]">
+      <div className="absolute left-[50%] md:left-[51%] xl:left-[50%] top-2 xl:ml-1 translate-x-[-50%]">
         <Logo />
       </div>
 
@@ -120,13 +118,14 @@ const NavBar = () => {
             <CustomLink href="/login" title="Вхід" className="mx-2" />
           )}
         </nav>
-        <nav className="flex items-center justify-center flex-wrap xl:w-full xl:absolute md:left-[49%] xl:top-[90%] xl:left-[50%] xl:translate-x-[-50%]">
+        <nav className="flex items-center justify-center flex-wrap xl:w-full xl:absolute md:left-[51%] xl:top-[90%] xl:left-[50%] xl:translate-x-[-50%]">
           <motion.a
             href="https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
             target={"_blank"}
             className="w-6 mx-3"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Відкрити Viber сторінку парафії"
           >
             <Viber />
           </motion.a>
@@ -140,6 +139,7 @@ const NavBar = () => {
             className="w-6 mx-3"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Відкрити Facebook сторінку парафії"
           >
             <Facebook />
           </motion.a>
@@ -149,6 +149,7 @@ const NavBar = () => {
             className="w-6 ml-3"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Відкрити Youtube канал"
           >
             <Youtube />
           </motion.a>

@@ -6,7 +6,7 @@ import Hstyle from "@/components/helpers/Hstyle";
 import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
-import Pic from "../../public/images/nativite.jpeg"
+import Pic from "../../public/images/nativite.jpeg";
 
 export async function getStaticProps() {
   try {
@@ -78,9 +78,9 @@ export async function getStaticProps() {
       },
     };
   }
-};
+}
 
-export default function Home({todayList, list, gospel, news, history }) {
+export default function Home({ todayList, list, gospel, news, history }) {
   return (
     <>
       <Head>
@@ -186,6 +186,7 @@ export default function Home({todayList, list, gospel, news, history }) {
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10557.696192339188!2d22.325410000000005!3d48.58257900000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47391bde37af41d3%3A0xa82320aab776021a!2z0KbQtdGA0LrQstCwINCg0ZbQt9C00LLQsCDQn9GA0LXRgdCy0Y_RgtC-0Zcg0JHQvtCz0L7RgNC-0LTQuNGG0ZY!5e0!3m2!1suk!2sua!4v1683050758815!5m2!1suk!2sua"
                     width="100%"
                     height="450"
+                    title="Адреса Церкви на карті"
                     className="w-full"
                     style={{ border: 0 }}
                     allowFullScreen=""
@@ -194,8 +195,11 @@ export default function Home({todayList, list, gospel, news, history }) {
                   />
                 </div>
                 <div className="w-1/2 lg:w-full font-mont text-royalNavy font-bold flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
-                  <h2>Настоятель храму о. Павло Фіцай.</h2>
-                  <h3>Адреса: вул. Жатковича, № 1, м. Ужгород (мкр. Дравці), Закарпатська обл. 88006</h3>
+                  <h2>Настоятель&nbsp;храму&nbsp;о.&nbsp;Павло&nbsp;Фіцай.</h2>
+                  <h3>
+                    Адреса:&nbsp;вул. Жатковича, № 1, м. Ужгород
+                    (мкр. Дравці), Закарпатська обл. 88006
+                  </h3>
                 </div>
               </article>
             </div>

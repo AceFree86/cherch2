@@ -63,7 +63,7 @@ export default function Schedule({ list }) {
               <>
                 <Link
                   href={{
-                    pathname: "/form-add",
+                    pathname: "/form/add",
                     query: {
                       form: "schedule",
                     },

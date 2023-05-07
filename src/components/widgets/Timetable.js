@@ -87,7 +87,7 @@ const Timetable = ({ state, doc, hiding }) => {
                   <>
                     <Link
                       href={{
-                        pathname: `/form-update`,
+                        pathname: "/form/update",
                         query: {
                           doc: document._id,
                           path_p: "",
