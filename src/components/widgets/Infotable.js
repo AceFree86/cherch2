@@ -5,11 +5,17 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 
+function extractNameFromPath(path) {
+  const withoutQueryParams =
+    path.indexOf("?") !== -1 ? path.split("?")[0] : path;
+  const [name] = withoutQueryParams.substring(1).split("/");
+  return name;
+};
+
 const Infotable = ({
   postsS,
   collection,
   pathPage,
-  pathN,
   n_folder,
   router,
   hiding,
@@ -47,7 +53,7 @@ const Infotable = ({
                     className="w-auto h-auto lg:w-full"
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    as={"image"}
+                    as="image"
                   />
                 </div>
                 <ul className="w-1/2 lg:w-full flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
@@ -81,10 +87,12 @@ const Infotable = ({
                       <>
                         <Link
                           href={{
-                            pathname: pathN,
+                            pathname: "form-update",
                             query: {
                               doc: document._id,
                               path_p: pathPage,
+                              form: extractNameFromPath(pathPage),
+                              name_coll: collection,
                             },
                           }}
                           className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white md:font-bold py-2 px-4 rounded-md"

@@ -90,6 +90,9 @@ const Timetable = ({ state, doc, hiding }) => {
                         pathname: `/form-update`,
                         query: {
                           doc: document._id,
+                          path_p: "",
+                          form: "schedule",
+                          name_coll: "List_Day",
                         },
                       }}
                       className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white md:font-bold py-2 px-4 rounded-md"

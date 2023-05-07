@@ -101,7 +101,7 @@ export default function Home({todayList, list, gospel, news, history }) {
                 className="w-full h-auto inline-block rounded-lg ml-2.5 mt-2.5 mb-2.5"
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                as={"image"}
+                as="image"
               />
             </div>
 
@@ -142,7 +142,6 @@ export default function Home({todayList, list, gospel, news, history }) {
             postsS={gospel}
             collection={"List_Gospel"}
             pathPage={"/"}
-            pathN={""}
             n_folder={""}
             router={null}
             hiding={true}
@@ -156,7 +155,6 @@ export default function Home({todayList, list, gospel, news, history }) {
             postsS={news}
             collection={"List_News"}
             pathPage={"/"}
-            pathN={""}
             n_folder={""}
             router={null}
             hiding={true}
@@ -170,7 +168,6 @@ export default function Home({todayList, list, gospel, news, history }) {
             postsS={history}
             collection={"History"}
             pathPage={"/"}
-            pathN={""}
             n_folder={""}
             router={null}
             hiding={true}
