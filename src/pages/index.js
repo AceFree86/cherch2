@@ -99,7 +99,7 @@ export default function Home({todayList, list, gospel, news, history }) {
                 height={100}
                 alt="Церква Різдва Богородиці"
                 className="w-full h-auto inline-block rounded-lg ml-2.5 mt-2.5 mb-2.5"
-                priority={true}
+                priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 as={"image"}
               />
