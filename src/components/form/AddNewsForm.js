@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Upload } from "../helpers/Icons";
 import {
-  handleDeleteImage,
+  handleDeleteMImage,
   getCurrentDate,
   calculateRows,
 } from "../helpers/Servise";
@@ -14,7 +14,7 @@ import { showSuccessToast, showErrorToast } from "../widgets/Toast";
 const AddNewsForm = () => {
   const router = useRouter();
   const fileInputRef = useRef(null);
-  const [uploadImage, setUploadImage] = useState();
+  const [uploadImage, setUploadImage] = useState([]);
   const [title, setTitle] = useState("");
   const [textData, setTextData] = useState("");
   const [toDate, setDate] = useState(getCurrentDate());
@@ -26,35 +26,38 @@ const AddNewsForm = () => {
     _date: toDate,
   };
 
-  async function handleOnChange(e) {
+  const handleOnChange = async (e) => {
     try {
-      const fileInput = e.target.files[0];
-      const formData = new FormData();
-      formData.append("file", fileInput);
-      formData.append("upload_preset", process.env.NEXT_PUBLIC_PRESET_NAME);
-      const data = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_N}/image/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      ).then((r) => r.json());
+      const files = Array.from(e.target.files);
+      const promises = files.map(async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", process.env.NEXT_PUBLIC_PRESET_NAME);
+        const r = await fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_N}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        const data = await r.json();
+        const url = data.secure_url; // Get the secure URL with "https" protocol
+        return url;
+      });
+      const urls = await Promise.all(promises);
+      setUploadImage((prevImages) => [...prevImages, ...urls]);
       showSuccessToast("Успіх: фото збережено в Cloudinary!");
-      setUploadImage(data.url);
     } catch (error) {
       showErrorToast("Помилка: не вдалося в Cloudinary.");
       console.error(error);
     }
-  }
-
-  const resetFileInput = () => {
-    fileInputRef.current.value = "";
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/news/add", {
+      await fetch("/api/news/add", {
         method: "POST",
         body: JSON.stringify(news),
       });
@@ -81,9 +84,7 @@ const AddNewsForm = () => {
           <div className="items-center justify-stretch w-full grid place-items-center">
             <label
               htmlFor="dropzone-file"
-              className={`flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 mt-5 ${
-                !uploadImage ? "visible" : "hidden"
-              }`}
+              className={`flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 mt-5`}
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <Upload />
@@ -103,36 +104,40 @@ const AddNewsForm = () => {
                 className="hidden"
                 ref={fileInputRef}
                 onChange={handleOnChange}
+                multiple
               />
             </label>
-            <div>
-              <Image
-                src={uploadImage || DefaultImage}
-                alt="Uploaded Image"
-                width={50}
-                height={50}
-                className={`w-full h-auto inline-block ${
-                  !uploadImage ? "hidden" : "visible mt-5"
-                }`}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-              <button
-                type="button"
-                onClick={(e) =>
-                  handleDeleteImage(
-                    e,
-                    uploadImage,
-                    setUploadImage,
-                    resetFileInput
-                  )
-                }
-                className={`w-full block  items-center rounded-md bg-red-600 px-3 py-2 text-sm md:text-base text-white shadow-sm hover:bg-red-500 md:font-bold ${
-                  !uploadImage ? "hidden" : "visible mt-5"
-                }`}
-              >
-                Видалити
-              </button>
-            </div>
+            {uploadImage.map((image, index) => (
+              <div key={index} className="m-2">
+                {image && (
+                  <>
+                    <h4 className="text-red-600 px-2 mt-1">
+                      {"Фото збережено в онлайн-сховищі!"}
+                    </h4>
+                    <Image
+                      src={image || DefaultImage}
+                      alt="Uploaded Image"
+                      width={50}
+                      height={50}
+                      className="w-full h-auto inline-block mt-1"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        handleDeleteMImage(e, image);
+                        setUploadImage((prevImages) =>
+                          prevImages.filter((_, i) => i !== index)
+                        );
+                      }}
+                      className="w-full block items-center rounded-md bg-red-600 px-3 py-2 text-sm md:text-base text-white shadow-sm hover:bg-red-500 mt-2 mb-5 md:font-bold"
+                    >
+                      Видалити фото з онлайн-сховища
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
           </div>
           <textarea
             id="message"

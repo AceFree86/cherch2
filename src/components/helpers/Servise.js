@@ -70,6 +70,36 @@ export const handleDeleteImage = async (
   }
 };
 
+export const handleDeleteMImage = async (
+  e,
+  uploadImage
+) => {
+  e.preventDefault();
+  const publicId = getPublicIdFromUrl(uploadImage);
+  const apiSecret = process.env.NEXT_PUBLIC_API_SECR;
+  const { signature, timestamp } = generateSignature(publicId, apiSecret);
+  const url_c = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_N}/image/destroy`;
+
+  try {
+    const response = await fetch(url_c, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        public_id: publicId,
+        signature: signature,
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
+        timestamp: timestamp,
+      }),
+    });
+    showSuccessToast("УСПІХ: фото видалено з Cloudinary!");
+    console.error(response);
+  } catch (error) {
+    showErrorToast("Помилка: не вдалося видалити.");
+  }
+};
+
 export const handleDeleteImagePage = async (uploadImage) => {
   const publicId = getPublicIdFromUrl(uploadImage);
   const apiSecret = process.env.NEXT_PUBLIC_API_SECR;

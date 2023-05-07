@@ -120,7 +120,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                   <li>Настоятель храму </li>
                   <li>о. Павло Фіцай</li>
                   <li>
-                    <p class="text-gray-700">
+                    <p className="text-gray-700">
                       моб.{" "}
                       <span className="text-blue-500 hover:underline">
                         <a href="tel:0667303179">0667303179</a>
@@ -203,7 +203,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                   <h2 className="font-bold">
                     Настоятель&nbsp;храму&nbsp;о.&nbsp;Павло&nbsp;Фіцай.
                   </h2>
-                  <p class="text-gray-700">
+                  <p className="text-gray-700">
                     моб.{" "}
                     <span className="text-blue-500 hover:underline">
                       <a href="tel:0667303179">0667303179</a>
@@ -235,7 +235,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                   >
                     Youtube канал
                   </a>
-                  <p class="text-gray-700 mt-6">
+                  <p className="text-gray-700 mt-6">
                     Адреса:&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 ">
                       <a

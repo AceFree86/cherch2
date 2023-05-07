@@ -10,7 +10,7 @@ function extractNameFromPath(path) {
     path.indexOf("?") !== -1 ? path.split("?")[0] : path;
   const [name] = withoutQueryParams.substring(1).split("/");
   return name;
-};
+}
 
 const Infotable = ({
   postsS,
@@ -43,20 +43,34 @@ const Infotable = ({
         {postsS.map((document) => (
           <div key={document._id}>
             <div className="col-span-12">
-              <article className="w-full flex items-center justify-between p-7 lg:flex-col lg:p-8 xs:p-4">
-                <div className="w-1/2 lg:w-full">
-                  <Image
-                    src={document.imageUrl}
-                    width={100}
-                    height={100}
-                    alt="Uploaded Image"
-                    className="w-auto h-auto lg:w-full"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    as="image"
-                  />
+              <article className="w-full flex items-center justify-center p-7 md:flex-col md:p-8 xs:p-4">
+                <div className="w-1/2 md:w-full">
+                  {Array.isArray(document.imageUrl) ? (
+                    <Image
+                      key={0}
+                      src={document.imageUrl[0]}
+                      width={100}
+                      height={100}
+                      alt="Uploaded Image"
+                      className="w-auto h-auto md:w-full"
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      as="image"
+                    />
+                  ) : (
+                    <Image
+                      src={document.imageUrl}
+                      width={100}
+                      height={100}
+                      alt="Uploaded Image"
+                      className="md:w-full w-[70%] h-auto"
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      as="image"
+                    />
+                  )}
                 </div>
-                <ul className="w-1/2 lg:w-full flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
+                <ul className="w-1/2 md:w-full flex flex-col items-start pl-6 md:pl-0 md:pt-6">
                   <p className="text-sm font-bold border-b border-gray-200 w-full">{`Додано: ${document._date}`}</p>
                   <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                     {document._title}

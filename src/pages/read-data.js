@@ -66,15 +66,36 @@ export default function ReadData({ list, path_p }) {
               <div className="mt-2 relative">
                 <ul className="w-full flex flex-col items-start justify-between">
                   <div className="flex place-items-start md:items-center justify-between md:inline-block">
-                    <Image
-                      src={document.imageUrl}
-                      width={100}
-                      height={100}
-                      alt="Uploaded Image"
-                      className="w-1/4 md:w-full h-auto inline-block"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="ml-1.5 md:ml-0">
+                    <div className="w-1/2 lg:w-full">
+                      {Array.isArray(document.imageUrl) ? (
+                        document.imageUrl.map((imageUrl, index) => (
+                          <Image
+                            key={index}
+                            src={imageUrl}
+                            width={100}
+                            height={100}
+                            alt="Uploaded Image"
+                            className="md:w-full w-[50%] h-auto inline-block"
+                            priority
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            as="image"
+                          />
+                        ))
+                      ) : (
+                        <Image
+                          src={document.imageUrl}
+                          width={100}
+                          height={100}
+                          alt="Uploaded Image"
+                          className="md:w-full w-[50%] h-auto inline-block"
+                          priority
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          as="image"
+                        />
+                      )}
+                    </div>
+
+                    <div className="w-3/5 md:w-full ml-1.5 md:ml-0">
                       <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                         {document._title}
                       </h3>

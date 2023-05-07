@@ -23,7 +23,7 @@ export const Footer = () => {
             Email@:
             <a
               href="mailto:gifler@me.com"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               gifler@me.com
             </a>
