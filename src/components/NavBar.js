@@ -59,7 +59,6 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 const NavBar = () => {
   const { data } = useSession();
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
   const handleClick = () => {
     setIsOpen(!isOpen);

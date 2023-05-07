@@ -215,7 +215,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                       "https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
                     }
                     target={"_blank"}
-                    className="text-blue-500 hover:text-blue-700 mt-4"
+                    className="text-blue-500 hover:text-blue-700 mt-6"
                   >
                     Viber група греко-католицької парафії Дравці
                   </a>
@@ -224,18 +224,18 @@ export default function Home({ todayList, list, gospel, news, history }) {
                       "https://www.facebook.com/people/%D0%93%D1%80%D0%B5%D0%BA%D0%BE-%D0%BA%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D1%86%D1%8C%D0%BA%D0%B0-%D0%BF%D0%B0%D1%80%D0%B0%D1%84%D1%96%D1%8F-%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0-%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97-%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96-%D0%BC%D0%BA%D1%80%D0%94%D1%80%D0%B0%D0%B2%D1%86%D1%96/100064700798125/"
                     }
                     target={"_blank"}
-                    className="text-blue-500 hover:text-blue-700 mt-4"
+                    className="text-blue-500 hover:text-blue-700 mt-6"
                   >
                     Facebook сторінка греко-католицької парафії Дравці
                   </a>
                   <a
                     href={"https://www.youtube.com/@user-eb8qo7nh7y"}
                     target={"_blank"}
-                    className="text-blue-500 hover:text-blue-700 mt-4"
+                    className="text-blue-500 hover:text-blue-700 mt-6"
                   >
                     Youtube канал
                   </a>
-                  <p class="text-gray-700 mt-4">
+                  <p class="text-gray-700 mt-6">
                     Адреса:&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 ">
                       <a
