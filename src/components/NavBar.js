@@ -18,8 +18,7 @@ const CustomLink = ({ href, title, className = "" }) => {
     >
       {title}
       <samp
-        className={`h-[1px] inline-block bg-dark absolute left-0 bottom-0 group-hover:w-full 
-        transition-[width] ease duration-300 ${
+        className={`h-[1px] inline-block bg-dark absolute left-0 bottom-0 group-hover:w-full transition-[width] ease duration-300 ${
           router.asPath === href ? "w-full" : "w-0"
         }`}
       >
@@ -122,8 +121,7 @@ const NavBar = () => {
           )}
         </nav>
         <nav
-          className="flex items-center justify-center flex-wrap 
-        xl:w-full xl:absolute xl:left-[51%] xl:top-20 xl:translate-x-[-50%]"
+          className="flex items-center justify-center flex-wrap xl:w-full xl:absolute xl:left-[51%] xl:top-20 xl:translate-x-[-50%]"
         >
           <motion.a
             href="https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
@@ -163,9 +161,7 @@ const NavBar = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
           animate={{ scale: 1, opacity: 1 }}
-          className="md:min-w-[95vw] min-w-[60vw] flex flex-col text-light1 font-bold justify-between z-30
-           items-center fixed top-96 left-1/2 
-          -translate-x-1/2 -translate-y-1/2 bg-royalNavy rounded-lg py-32"
+          className="md:min-w-[95vw] min-w-[60vw] flex flex-col text-light1 font-bold justify-between z-30 items-center fixed top-96 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-royalNavy rounded-lg py-32"
         >
           <nav className="uppercase flex items-center flex-col justify-center text-light">
             <CustomMobileLink
