@@ -2,15 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: "OpenSans";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../../fonts/opensans/OpenSans-Regular.ttf")
-    format('ttf');
-    font-display: swap;
-  }
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../fonts/opensans/OpenSans-Regular.ttf") format("truetype");
+  font-display: swap;
 }
 
 html {
