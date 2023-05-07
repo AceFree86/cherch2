@@ -74,12 +74,12 @@ export default function ReadData({ list, path_p }) {
                       className="w-1/4 md:w-full h-auto inline-block"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="ml-1.5 md:ml-0" >
+                    <div className="ml-1.5 md:ml-0">
                       <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                         {document._title}
                       </h3>
                       <div>
-                        <p className="text-left font-normal text-stone-700 leading-6 text-base break-words">
+                        <p className="text-left font-normal text-stone-700 leading-6 text-base break-words md:text-lg">
                           <NewlineText text={document.text} />
                         </p>
                         <Link

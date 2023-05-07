@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { Upload } from "../helpers/Icons";
 import Link from "next/link";

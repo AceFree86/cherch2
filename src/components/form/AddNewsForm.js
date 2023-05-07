@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Upload } from "../helpers/Icons";
 import {
   handleDeleteImage,
@@ -17,7 +17,7 @@ const AddNewsForm = () => {
   const [uploadImage, setUploadImage] = useState();
   const [title, setTitle] = useState("");
   const [textData, setTextData] = useState("");
-  const [toDate, setDate] = useState("");
+  const [toDate, setDate] = useState(getCurrentDate());
 
   const news = {
     _title: title,
@@ -25,14 +25,6 @@ const AddNewsForm = () => {
     text: textData,
     _date: toDate,
   };
-
-  useEffect(() => {
-    const currentDate = getCurrentDate();
-    setDate(currentDate);
-    return () => {
-      console.log("run");
-    };
-  }, []);
 
   async function handleOnChange(e) {
     try {

@@ -57,6 +57,7 @@ const Infotable = ({
                   />
                 </div>
                 <ul className="w-1/2 lg:w-full flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
+                  <p>{document._date}</p>
                   <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                     {document._title}
                   </h3>
@@ -65,6 +66,7 @@ const Infotable = ({
                       {document.text}
                     </p>
                   </div>
+
                   <Link
                     href={{
                       pathname: "/read-data",

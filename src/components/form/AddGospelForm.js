@@ -17,7 +17,7 @@ const AddGospelForm = () => {
   const [uploadImage, setUploadImage] = useState();
   const [title, setTitle] = useState("");
   const [textData, setTextData] = useState("");
-  const [toDate, setDate] = useState("");
+  const [toDate, setDate] = useState(getCurrentDate());
 
   const news = {
     _title: title,
@@ -25,14 +25,6 @@ const AddGospelForm = () => {
     text: textData,
     _date: toDate,
   };
-
-  useEffect(() => {
-    const currentDate = getCurrentDate();
-    setDate(currentDate);
-    return () => {
-      console.log("run");
-    };
-  }, []);
 
   async function handleOnChange(e) {
     try {
@@ -101,9 +93,7 @@ const AddGospelForm = () => {
                   </span>
                   &nbsp;або перетягнути та впусти
                 </p>
-                <p className="text-xs text-gray-500">
-                  SVG, PNG, JPG or GIF.
-                </p>
+                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF.</p>
               </div>
               <input
                 id="dropzone-file"
