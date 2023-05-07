@@ -7,7 +7,7 @@ import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import Timetable from "@/components/widgets/Timetable";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
     const { db } = await connectToDatabase();
     const list = await db
