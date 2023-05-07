@@ -57,7 +57,7 @@ const Infotable = ({
                   />
                 </div>
                 <ul className="w-1/2 lg:w-full flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
-                  <p>{document._date}</p>
+                  <p className="text-sm font-bold border-b border-gray-200 w-full">{`Додано: ${document._date}`}</p>
                   <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                     {document._title}
                   </h3>

@@ -120,7 +120,12 @@ export default function Home({ todayList, list, gospel, news, history }) {
                   <li>Настоятель храму </li>
                   <li>о. Павло Фіцай</li>
                   <li>
-                    <a href={`tel:0667303179`}>моб. 0667303179</a>
+                    <p class="text-gray-700">
+                      моб.{" "}
+                      <span className="text-blue-500 hover:underline">
+                        <a href="tel:0667303179">0667303179</a>
+                      </span>
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -194,12 +199,53 @@ export default function Home({ todayList, list, gospel, news, history }) {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-                <div className="w-1/2 lg:w-full font-mont text-royalNavy font-bold flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
-                  <h2>Настоятель&nbsp;храму&nbsp;о.&nbsp;Павло&nbsp;Фіцай.</h2>
-                  <h3>
-                    Адреса:&nbsp;вул. Жатковича, № 1, м. Ужгород
-                    (мкр. Дравці), Закарпатська обл. 88006
-                  </h3>
+                <div className="w-1/2 lg:w-full font-mont text-royalNavy flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
+                  <h2 className="font-bold">
+                    Настоятель&nbsp;храму&nbsp;о.&nbsp;Павло&nbsp;Фіцай.
+                  </h2>
+                  <p class="text-gray-700">
+                    моб.{" "}
+                    <span className="text-blue-500 hover:underline">
+                      <a href="tel:0667303179">0667303179</a>
+                    </span>
+                  </p>
+
+                  <a
+                    href={
+                      "https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
+                    }
+                    target={"_blank"}
+                    className="text-blue-500 hover:text-blue-700 mt-4"
+                  >
+                    Viber група греко-католицької парафії Дравці
+                  </a>
+                  <a
+                    href={
+                      "https://www.facebook.com/people/%D0%93%D1%80%D0%B5%D0%BA%D0%BE-%D0%BA%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D1%86%D1%8C%D0%BA%D0%B0-%D0%BF%D0%B0%D1%80%D0%B0%D1%84%D1%96%D1%8F-%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0-%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97-%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96-%D0%BC%D0%BA%D1%80%D0%94%D1%80%D0%B0%D0%B2%D1%86%D1%96/100064700798125/"
+                    }
+                    target={"_blank"}
+                    className="text-blue-500 hover:text-blue-700 mt-4"
+                  >
+                    Facebook сторінка греко-католицької парафії Дравці
+                  </a>
+                  <a
+                    href={"https://www.youtube.com/@user-eb8qo7nh7y"}
+                    target={"_blank"}
+                    className="text-blue-500 hover:text-blue-700 mt-4"
+                  >
+                    Youtube канал
+                  </a>
+                  <p class="text-gray-700 mt-4">
+                    Адреса:&nbsp;
+                    <span className="text-blue-500 hover:text-blue-700 ">
+                      <a
+                        href={`https://www.google.com/maps/place/%D0%A6%D0%B5%D1%80%D0%BA%D0%B2%D0%B0+%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0+%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97+%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96/@48.582579,22.32541,14z/data=!4m6!3m5!1s0x47391bde37af41d3:0xa82320aab776021a!8m2!3d48.5825787!4d22.3254096!16s%2Fg%2F11gfmztbpb?hl=uk`}
+                      >
+                        вул. Жатковича, № 1, м. Ужгород (мкр. Дравці),
+                        Закарпатська обл. 88006
+                      </a>
+                    </span>
+                  </p>
                 </div>
               </article>
             </div>
