@@ -11,6 +11,9 @@ export default function FormAdd() {
   const form = router.query.form;
   let componentToRender;
   switch (form) {
+    case "schedule":
+      componentToRender = <AddGraphForm />;
+      break;
     case "gospel":
       componentToRender = <AddGospelForm />;
       break;
@@ -18,7 +21,7 @@ export default function FormAdd() {
       componentToRender = <AddNewsForm />;
       break;
     default:
-      componentToRender = <AddGraphForm />;
+      componentToRender = null;
   }
 
   return (

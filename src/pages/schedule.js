@@ -60,7 +60,7 @@ export default function Schedule({ list }) {
                   href={{
                     pathname: "/form-add",
                     query: {
-                      form: "",
+                      form: "schedule",
                     },
                   }}
                   className="shadow-sm bg-hadfieldBlue text-sm md:text-base hover:bg-hadfieldBlueLite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hadfieldBlue text-white py-2 px-4 rounded-md md:font-bold"

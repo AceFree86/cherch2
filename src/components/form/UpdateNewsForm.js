@@ -78,7 +78,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
           />
           <div className="items-center justify-stretch w-full grid place-items-center">
             <label
-              for="dropzone-file"
+              htmlFor="dropzone-file"
               className={`flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 mt-5 ${
                 !uploadImage ? "visible" : "hidden"
               }`}
@@ -135,7 +135,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
             value={textData}
             onChange={(e) => setTextData(e.target.value)}
             rows={10}
-            className="block p-2.5 w-full text-gray-900 text-sm md:text-base bg-gray-50 rounded-base border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
+            className="block p-2.5 w-full text-sm md:text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mt-5"
             placeholder={"Напишіть текст..."}
           />
           <div className="mt-10 flex justify-between">

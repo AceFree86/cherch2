@@ -5,10 +5,7 @@ const Hstyle = ({text}) => {
   return (
     <div>
       <h1
-        className="border-b border-gray-300 w-full mx-auto py-2 
-      flex items-center justify-center md:items-stretch text-center sm:py-0 
-      font-bold text-royalNavy text-4xl md:text-3xl
-       sm:text-2xl uppercase no-box-sizing-md"
+        className="border-b border-gray-300 w-full mx-auto py-2 flex items-center justify-center md:items-stretch text-center sm:py-0  font-bold text-royalNavy text-4xl md:text-3xl sm:text-2xl uppercase"
       >
         {text}
       </h1>

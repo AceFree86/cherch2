@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Upload } from "../helpers/Icons";
 import {
   handleDeleteImage,
@@ -88,7 +88,7 @@ const AddGospelForm = () => {
           />
           <div className="items-center justify-stretch w-full grid place-items-center">
             <label
-              for="dropzone-file"
+              htmlFor="dropzone-file"
               className={`flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 mt-5 ${
                 !uploadImage ? "visible" : "hidden"
               }`}
@@ -101,7 +101,7 @@ const AddGospelForm = () => {
                   </span>
                   &nbsp;або перетягнути та впусти
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500">
                   SVG, PNG, JPG or GIF.
                 </p>
               </div>
