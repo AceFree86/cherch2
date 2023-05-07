@@ -91,7 +91,7 @@ const NavBar = () => {
         ></span>
       </button>
 
-      <div className="absolute left-[50%] md:left-[51%] xl:left-[50%] top-2 xl:ml-1 translate-x-[-50%]">
+      <div className="absolute left-[50%] xl:left-[50%] top-2 xl:ml-1 translate-x-[-50%]">
         <Logo />
       </div>
 
@@ -118,7 +118,7 @@ const NavBar = () => {
             <CustomLink href="/login" title="Вхід" className="mx-2" />
           )}
         </nav>
-        <nav className="flex items-center justify-center flex-wrap xl:w-full xl:absolute md:left-[51%] xl:top-[90%] xl:left-[50%] xl:translate-x-[-50%]">
+        <nav className="flex items-center justify-center flex-wrap xl:w-full xl:absolute md:left-[50%] xl:top-[90%] xl:left-[50%] xl:translate-x-[-50%]">
           <motion.a
             href="https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
             target={"_blank"}
