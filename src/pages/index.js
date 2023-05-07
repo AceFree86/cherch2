@@ -6,6 +6,7 @@ import Hstyle from "@/components/helpers/Hstyle";
 import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
+import Pic from "../../public/images/nativite.jpeg"
 
 export const getServerSideProps = async () => {
   try {
@@ -93,30 +94,24 @@ export default function Home({todayList, list, gospel, news, history }) {
           <div className="border-t border-gray-500 border-b-gray-500 flex items-center justify-between w-full lg:flex-col rounded-lg bg-moonlight border">
             <div className="w-1/2">
               <Image
-                src="/images/nativite.jpeg"
+                src={Pic}
                 width={100}
                 height={100}
                 alt="Церква Різдва Богородиці"
                 className="w-full h-auto inline-block rounded-lg ml-2.5 mt-2.5 mb-2.5"
-                priority
+                priority={true}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
 
             <div className="w-1/2 lg:w-full ml-5 md:ml-0 flex-col items-center self-center text-left">
               <h1
-                className="w-full mx-auto py-2 flex items-center justify-center
-                 text-center overflow-hidden sm:py-0
-                 font-mont text-royalNavy font-bold capitalize
-                 text-4xl md:text-3xl sm:text-2xl"
+                className="w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden sm:py-0 font-mont text-royalNavy font-bold capitalize text-4xl md:text-3xl sm:text-2xl"
               >
                 {"Греко-Католицька парафія Різдва Пресвятої Богородиці"}
               </h1>
               <p
-                className="w-full mx-auto py-2 flex items-center justify-center
-                 text-center overflow-hidden sm:py-0
-                 font-mont text-royalNavy font-bold
-                 text-4xl md:text-3xl sm:text-2xl"
+                className="w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden sm:py-0 font-mont text-royalNavy font-bold text-4xl md:text-3xl sm:text-2xl"
               >
                 {"мкр. Дравці"}
               </p>

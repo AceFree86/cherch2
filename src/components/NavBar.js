@@ -11,7 +11,11 @@ const CustomLink = ({ href, title, className = "" }) => {
   const router = useRouter();
 
   return (
-    <Link href={href} className={`${className} relative group`}>
+    <Link
+      href={href}
+      className={`${className} relative group`}
+      title="btn of main menu"
+    >
       {title}
       <samp
         className={`h-[1px] inline-block bg-dark absolute left-0 bottom-0 group-hover:w-full 
@@ -38,6 +42,7 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
         href={href}
         className={`${className} relative group my-4 text-lg uppercase`}
         onClick={handleClick}
+        title="btn of main menu"
       >
         {title}
         <samp
@@ -70,6 +75,7 @@ const NavBar = () => {
       <button
         className="flex-col justify-center items-center hidden xl:flex h-10 w-10"
         onClick={handleClick}
+        title="main menu"
       >
         <span
           className={`bg-dark block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
