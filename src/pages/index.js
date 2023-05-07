@@ -8,7 +8,7 @@ import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
 import Pic from "../../public/images/nativite.jpeg"
 
-export const getServerSideProps = async () => {
+export async function getStaticProps() {
   try {
     const { db } = await connectToDatabase();
 
@@ -65,6 +65,7 @@ export const getServerSideProps = async () => {
         news: JSON.parse(JSON.stringify(news)),
         history: JSON.parse(JSON.stringify(history)),
       },
+      revalidate: 120,
     };
   } catch (error) {
     console.error(error);
@@ -192,11 +193,10 @@ export default function Home({todayList, list, gospel, news, history }) {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-                <h3 className="w-1/2 lg:w-full font-mont text-royalNavy font-bold flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
-                  {
-                    "вул. Жатковича, № 1, м. Ужгород (мкр. Дравці), Закарпатська обл. 88006"
-                  }
-                </h3>
+                <div className="w-1/2 lg:w-full font-mont text-royalNavy font-bold flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
+                  <h2>Настоятель храму о. Павло Фіцай.</h2>
+                  <h3>Адреса: вул. Жатковича, № 1, м. Ужгород (мкр. Дравці), Закарпатська обл. 88006</h3>
+                </div>
               </article>
             </div>
           </div>

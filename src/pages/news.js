@@ -8,12 +8,12 @@ import Link from "next/link";
 import Hstyle from "@/components/helpers/Hstyle";
 import Layout from "@/components/Layout";
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps(context) {
   try {
     const { db } = await connectToDatabase();
     const collection = await db.collection("List_News");
-
-    const page = query.page ? parseInt(query.page) : 1;
+    
+    const page = context.query.page ? parseInt(context.query.page) : 1;
     const limit = 10;
     const skip = (page - 1) * limit;
 
@@ -35,6 +35,13 @@ export async function getServerSideProps({ query }) {
     };
   } catch (e) {
     console.error(e);
+    return {
+      props: {
+        list: [],
+        currentPage: 1,
+        numPages: 1,
+      },
+    };
   }
 }
 

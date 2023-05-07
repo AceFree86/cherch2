@@ -8,6 +8,24 @@ import UpdateGraphForm from "@/components/form/UpdateGraphForm";
 import UpdateGospelForm from "@/components/form/UpdateGospelForm";
 import UpdateNewsForm from "@/components/form/UpdateNewsForm";
 
+export async function getServerSideProps(context) {
+  try {
+    const { db } = await connectToDatabase();
+    const list = await db.collection(context.query.name_coll).findOne({
+      _id: new ObjectId(context.query.doc),
+    });
+    return {
+      props: {
+        list: JSON.parse(JSON.stringify(list)),
+        path_p: context.query.path_p,
+        form: context.query.form,
+      },
+    };
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 export default function FormUpdate({ list, path_p, form }) {
   let componentToRender;
   switch (form) {
@@ -40,22 +58,4 @@ export default function FormUpdate({ list, path_p, form }) {
       </main>
     </>
   );
-}
-
-export async function getServerSideProps({ query }) {
-  try {
-    const { db } = await connectToDatabase();
-    const list = await db.collection(query.name_coll).findOne({
-      _id: new ObjectId(query.doc),
-    });
-    return {
-      props: {
-        list: JSON.parse(JSON.stringify(list)),
-        path_p: query.path_p,
-        form: query.form,
-      },
-    };
-  } catch (e) {
-    console.error(e);
-  }
 }
