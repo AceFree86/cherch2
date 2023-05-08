@@ -121,8 +121,7 @@ export const handleDeleteImagePage = async (uploadImage) => {
     });
     console.error(response);
   } catch (error) {
-    console.log(publicId);
-    console.log(error);
+    console.error(error);
   }
 };
 

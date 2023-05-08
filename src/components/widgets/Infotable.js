@@ -22,6 +22,21 @@ const Infotable = ({
 }) => {
   const { data } = useSession();
 
+  const deleteAllImages = async (urls) => {
+    if (!Array.isArray(urls)) {
+      await handleDeleteImagePage(urls);
+      return;
+    }
+
+    for (let i = 0; i < urls.length; i++) {
+      try {
+        await handleDeleteImagePage(urls[i]);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   const deleteTodo = async (todoId) => {
     const resp = await fetch(n_folder, {
       method: "DELETE",
@@ -43,7 +58,7 @@ const Infotable = ({
         {postsS.map((document) => (
           <div key={document._id}>
             <div className="col-span-12">
-              <article className="w-full flex items-center justify-center p-7 md:flex-col md:p-8 xs:p-4">
+              <article className="w-full flex justify-center p-7 md:flex-col md:p-8 xs:p-4">
                 <div className="w-1/2 md:w-full">
                   {Array.isArray(document.imageUrl) ? (
                     <Image
@@ -52,7 +67,7 @@ const Infotable = ({
                       width={100}
                       height={100}
                       alt="Uploaded Image"
-                      className="w-auto h-auto md:w-full"
+                      className="md:w-full w-[60%] h-auto inline-block float-right"
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       as="image"
@@ -63,7 +78,7 @@ const Infotable = ({
                       width={100}
                       height={100}
                       alt="Uploaded Image"
-                      className="md:w-full w-[70%] h-auto"
+                      className="md:w-full w-[60%] h-auto inline-block float-right"
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       as="image"
@@ -117,8 +132,8 @@ const Infotable = ({
                         </Link>
                         <button
                           onClick={() => {
+                            deleteAllImages(document.imageUrl);
                             deleteTodo(document._id);
-                            handleDeleteImagePage(document.imageUrl);
                           }}
                           className="text-white shadow-sm text-sm md:text-base bg-red-600 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 py-2 px-4 rounded-md md:font-bold"
                         >

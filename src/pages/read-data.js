@@ -63,9 +63,9 @@ export default function ReadData({ list, path_p }) {
           <div className="mt-5 sm:w-full"></div>
           {postsState.map((document) => (
             <div key={document._id}>
-              <div className="mt-2 relative">
-                <ul className="w-full flex flex-col items-start justify-between">
-                  <div className="flex place-items-start md:items-center justify-between md:inline-block">
+              <div className="mt-2 grid">
+                <div className="col-span-1">
+                  <div className="w-full flex justify-center p-7 md:flex-col md:p-8 xs:p-4">
                     <div className="w-1/2 lg:w-full">
                       {Array.isArray(document.imageUrl) ? (
                         document.imageUrl.map((imageUrl, index) => (
@@ -75,7 +75,7 @@ export default function ReadData({ list, path_p }) {
                             width={100}
                             height={100}
                             alt="Uploaded Image"
-                            className="md:w-full w-[50%] h-auto inline-block"
+                            className="lg:w-full w-[50%] h-auto inline-block"
                             priority
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             as="image"
@@ -87,20 +87,19 @@ export default function ReadData({ list, path_p }) {
                           width={100}
                           height={100}
                           alt="Uploaded Image"
-                          className="md:w-full w-[50%] h-auto inline-block"
+                          className="lg:w-full w-[60%] h-auto float-right "
                           priority
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           as="image"
                         />
                       )}
                     </div>
-
-                    <div className="w-3/5 md:w-full ml-1.5 md:ml-0">
+                    <div className="w-3/5 lg:w-full ml-3 md:ml-0">
                       <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                         {document._title}
                       </h3>
                       <div>
-                        <p className="text-left font-normal text-stone-700 leading-6 text-base break-words md:text-lg">
+                        <p className="text-left font-normal text-stone-700 leading-6 text-base break-words lg:text-lg">
                           <NewlineText text={document.text} />
                         </p>
                         <Link
@@ -112,7 +111,7 @@ export default function ReadData({ list, path_p }) {
                       </div>
                     </div>
                   </div>
-                </ul>
+                </div>
               </div>
             </div>
           ))}
