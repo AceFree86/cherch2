@@ -2,6 +2,7 @@ import { connectToDatabase } from "../../lib/mongodb";
 import Head from "next/head";
 import Image from "next/image";
 import Layout from "@/components/Layout";
+import Link from "next/link";
 import Hstyle from "@/components/helpers/Hstyle";
 import Timetable from "@/components/widgets/Timetable";
 import Infotable from "@/components/widgets/Infotable";
@@ -40,6 +41,13 @@ export async function getStaticProps() {
     const formattedToday = `${day}.${month}.${year}`;
     const filteredList = list.filter((post) => post._day === formattedToday);
 
+    const weeklyList = list.filter((post) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // set time to midnight
+      const dayAsDate = new Date(post.dayAsDate);
+      return dayAsDate >= today;
+    });
+
     const gospel = await db
       .collection("List_Gospel")
       .find({})
@@ -59,7 +67,7 @@ export async function getStaticProps() {
     return {
       props: {
         todayList: JSON.parse(JSON.stringify(filteredList)),
-        list: JSON.parse(JSON.stringify(list)),
+        list: JSON.parse(JSON.stringify(weeklyList)),
         gospel: JSON.parse(JSON.stringify(gospel)),
         news: JSON.parse(JSON.stringify(news)),
         history: JSON.parse(JSON.stringify(history)),
@@ -91,7 +99,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
 
       <main className="flex items-center text-dark w-full min-h-screen">
         <Layout className="min-h-screen pt-0 md:pt-16 sm:pt-8 grid place-items-center">
-          <div className="border-t border-gray-500 border-b-gray-500 flex items-center justify-between w-full lg:flex-col rounded-lg bg-moonlight border">
+          <div className="border-t border-gray-300 border-b-gray-300 flex items-center justify-between w-full lg:flex-col rounded-lg bg-moonlight/80 border">
             <div className="w-1/2">
               <Image
                 src={Pic}
@@ -114,7 +122,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
               </p>
 
               <OneList doc={todayList} />
-              <div className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]">
+              <div className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%] lg:text-lg">
                 <ul className="border-b border-twilightBlue-400 mb-2 font-bold text-left w-full text-darkShade ist-disc max-w-md space-y-1">
                   <li>Настоятель храму </li>
                   <li>о. Павло Фіцай</li>
@@ -122,7 +130,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                     <p className="text-gray-700">
                       моб.{" "}
                       <span className="text-blue-500 hover:underline">
-                        <a href="tel:0667303179">0667303179</a>
+                        <Link href="tel:0667303179">0667303179</Link>
                       </span>
                     </p>
                   </li>
@@ -205,44 +213,51 @@ export default function Home({ todayList, list, gospel, news, history }) {
                   <p className="text-gray-700">
                     моб.{" "}
                     <span className="text-blue-500 hover:text-blue-700 hover:underline">
-                      <a href="tel:0667303179">0667303179</a>
+                      <Link href="tel:0667303179">0667303179</Link>
+                    </span>
+                  </p>
+                  <p className="text-gray-700 lg:mt-5">
+                    Viber:&nbsp;
+                    <span className="text-blue-500 hover:text-blue-700 hover:underline">
+                      <Link
+                        href={
+                          "https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
+                        }
+                      >
+                        Група греко-католицької парафії Дравці
+                      </Link>
+                    </span>
+                  </p>
+                  <p className="text-gray-700 lg:mt-5">
+                    Facebook:&nbsp;
+                    <span className="text-blue-500 hover:text-blue-700 hover:underline">
+                      <Link
+                        href={
+                          "https://www.facebook.com/people/%D0%93%D1%80%D0%B5%D0%BA%D0%BE-%D0%BA%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D1%86%D1%8C%D0%BA%D0%B0-%D0%BF%D0%B0%D1%80%D0%B0%D1%84%D1%96%D1%8F-%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0-%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97-%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96-%D0%BC%D0%BA%D1%80%D0%94%D1%80%D0%B0%D0%B2%D1%86%D1%96/100064700798125/"
+                        }
+                      >
+                        Сторінка греко-католицької парафії Дравці
+                      </Link>
+                    </span>
+                  </p>
+                  <p className="text-gray-700 lg:mt-5">
+                    Youtube:&nbsp;
+                    <span className="text-blue-500 hover:text-blue-700 hover:underline">
+                      <Link href={"https://www.youtube.com/@user-eb8qo7nh7y"}>
+                        Канал
+                      </Link>
                     </span>
                   </p>
 
-                  <a
-                    href={
-                      "https://invite.viber.com/?g2=AQBg6HCdKwbriFB82gNwLHc0BeA03erP1gdIo5WVZMO1tvCLoSTHD62kL6gMjtj9"
-                    }
-                    target={"_blank"}
-                    className="text-blue-500 hover:text-blue-700 hover:underline lg:mt-5"
-                  >
-                    Viber група греко-католицької парафії Дравці
-                  </a>
-                  <a
-                    href={
-                      "https://www.facebook.com/people/%D0%93%D1%80%D0%B5%D0%BA%D0%BE-%D0%BA%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D1%86%D1%8C%D0%BA%D0%B0-%D0%BF%D0%B0%D1%80%D0%B0%D1%84%D1%96%D1%8F-%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0-%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97-%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96-%D0%BC%D0%BA%D1%80%D0%94%D1%80%D0%B0%D0%B2%D1%86%D1%96/100064700798125/"
-                    }
-                    target={"_blank"}
-                    className="text-blue-500 hover:text-blue-700 hover:underline lg:mt-5"
-                  >
-                    Facebook сторінка греко-католицької парафії Дравці
-                  </a>
-                  <a
-                    href={"https://www.youtube.com/@user-eb8qo7nh7y"}
-                    target={"_blank"}
-                    className="text-blue-500 hover:text-blue-700 hover:underline lg:mt-5"
-                  >
-                    Youtube канал
-                  </a>
                   <p className="text-gray-700 lg:mt-5">
                     Адреса:&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 hover:underline">
-                      <a
+                      <Link
                         href={`https://www.google.com/maps/place/%D0%A6%D0%B5%D1%80%D0%BA%D0%B2%D0%B0+%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0+%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97+%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96/@48.582579,22.32541,14z/data=!4m6!3m5!1s0x47391bde37af41d3:0xa82320aab776021a!8m2!3d48.5825787!4d22.3254096!16s%2Fg%2F11gfmztbpb?hl=uk`}
                       >
                         вул. Жатковича, № 1, м. Ужгород (мкр. Дравці),
                         Закарпатська обл. 88006
-                      </a>
+                      </Link>
                     </span>
                   </p>
                 </div>

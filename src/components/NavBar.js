@@ -104,13 +104,16 @@ const NavBar = () => {
             <>
               <Link
                 href="/"
-                style={{ cursor: "pointer" }}
+                className={"relative group ml-3"}
                 onClick={() => {
                   signOut();
                   showInfo("Ви вийшли!");
                 }}
               >
-                &nbsp;Вихід
+                Вихід
+                <samp
+                  className={"h-[1px] inline-block bg-dark absolute left-0 bottom-0 group-hover:w-full transition-[width] ease duration-300"}
+                />
               </Link>
             </>
           ) : (
@@ -190,13 +193,16 @@ const NavBar = () => {
               <>
                 <Link
                   href="/"
-                  style={{ cursor: "pointer" }}
+                  className={`relative group my-4 text-lg uppercase`}
                   onClick={() => {
                     signOut();
                     showInfo("Ви вийшли!");
                   }}
                 >
                   Вихід
+                  <samp
+                    className={`h-[1px] inline-block bg-light absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300`}
+                  />
                 </Link>
               </>
             ) : (

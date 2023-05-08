@@ -40,6 +40,7 @@ export async function getServerSideProps(context) {
 
 export default function ReadData({ list, path_p }) {
   const [postsState, setPostsState] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -69,17 +70,30 @@ export default function ReadData({ list, path_p }) {
                     <div className="w-1/2 lg:w-full">
                       {Array.isArray(document.imageUrl) ? (
                         document.imageUrl.map((imageUrl, index) => (
-                          <Image
-                            key={index}
-                            src={imageUrl}
-                            width={100}
-                            height={100}
-                            alt="Uploaded Image"
-                            className="lg:w-full w-[50%] h-auto inline-block"
-                            priority
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            as="image"
-                          />
+                          <>
+                            <Link
+                              href={imageUrl}
+                              target={"_blank"}
+                              className="text-blue-500 hover:text-blue-700 hover:underline lg:mt-5"
+                            >
+                              <Image
+                                key={index}
+                                src={imageUrl}
+                                width={100}
+                                height={100}
+                                alt="Uploaded Image"
+                                loading="lazy"
+                                className={`lg:w-full w-[60%] h-auto inline-block group-hover:opacity-75 duration-700 ${
+                                  isLoading
+                                    ? "grayscale blur-none scale-110"
+                                    : "grayscale-0 blur-0 scale-100"
+                                }`}
+                                onLoadingComplete={() => setLoading(false)}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                as="image"
+                              />
+                            </Link>
+                          </>
                         ))
                       ) : (
                         <Image

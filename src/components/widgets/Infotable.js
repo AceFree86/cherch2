@@ -1,4 +1,3 @@
-import React from "react";
 import { handleDeleteImagePage } from "../helpers/Servise";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
 import { useSession } from "next-auth/react";
@@ -28,13 +27,15 @@ const Infotable = ({
       return;
     }
 
-    for (let i = 0; i < urls.length; i++) {
-      try {
-        await handleDeleteImagePage(urls[i]);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+    await Promise.all(
+      urls.map(async (url) => {
+        try {
+          await handleDeleteImagePage(url);
+        } catch (error) {
+          console.error(error);
+        }
+      })
+    );
   };
 
   const deleteTodo = async (todoId) => {
@@ -42,8 +43,7 @@ const Infotable = ({
       method: "DELETE",
       body: JSON.stringify(todoId),
     });
-    const data = await resp.json();
-    console.log(data);
+    await resp.json();
     if (resp.ok) {
       router.reload();
       showSuccessToast("Успіх: документ успішно видалено !");
@@ -86,7 +86,7 @@ const Infotable = ({
                   )}
                 </div>
                 <ul className="w-1/2 md:w-full flex flex-col items-start pl-6 md:pl-0 md:pt-6">
-                  <p className="text-sm font-bold border-b border-gray-200 w-full">{`Додано: ${document._date}`}</p>
+                  <p className="text-sm font-normal border-b border-gray-200 w-full">{`Додано: ${document._date}`}</p>
                   <h3 className="font-mont text-royalNavy font-bold text-2xl uppercase">
                     {document._title}
                   </h3>
