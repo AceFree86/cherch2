@@ -39,7 +39,6 @@ const Details = ({ title, text, state }) => {
 const Timetable = ({ state, doc, hiding }) => {
   const router = useRouter();
   const { data } = useSession();
-  
 
   const deleteTodo = async (todoId) => {
     const resp = await fetch("/api/list/delete", {
@@ -62,7 +61,7 @@ const Timetable = ({ state, doc, hiding }) => {
   });
 
   return (
-    <div ref={ref} className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
+    <div ref={ref} className="mx-auto relative w-[70%] md:w-full">
       <motion.div
         style={{ scaleY: scrollYProgress }}
         className="absolute left-9 top-0 w-[4px] h-full bg-blue-600 origin-top md:w-[2px] md:left-[30px] xs:left-[20px]"
