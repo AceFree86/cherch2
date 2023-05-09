@@ -10,7 +10,7 @@ export const Footer = () => {
 
   return (
     <footer className="w-full font-bold text-lg sm:text-base">
-      <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+      <hr className="my-6 border-gray-300 sm:mx-auto lg:my-8" />
       {isOpen ? (
         <div className="w-full text-sm flex items-center justify-between bg-blue-50 border-t border-b border-blue-500 text-blue-700 px-4 py-3">
           <p className="text-gray-700">

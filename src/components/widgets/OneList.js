@@ -24,20 +24,26 @@ const Details = ({ title, text }) => {
 const OneList = ({ doc }) => {
   return (
     <>
-      {doc.map((document) => (
-        <div key={document._id}>
-          <div className="">
-            <ul className="w-full flex flex-col items-start justify-between ml-4">
-              <Details
-                title={`${MyFormattedDate(document._day)} 
+      {doc.length > 0 ? (
+        doc.map((document) => (
+          <div key={document._id}>
+            <div className="">
+              <ul className="w-full flex flex-col items-start justify-between ml-4">
+                <Details
+                  title={`${MyFormattedDate(document._day)} 
             ${document.stateDay}
             ${document.namesSaints && ` (${document.namesSaints})`}:`}
-                text={document.labels}
-              />
-            </ul>
+                  text={document.labels}
+                />
+              </ul>
+            </div>
           </div>
+        ))
+      ) : (
+        <div className="w-full font-mont text-royalNavy flex flex-col items-center pl-6 font-bold pb-3 lg:pl-0 lg:pt-6">
+          Сьогодні не має богослужінь.
         </div>
-      ))}
+      )}
     </>
   );
 };

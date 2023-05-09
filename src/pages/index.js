@@ -217,7 +217,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                     </span>
                   </p>
                   <p className="text-gray-700 lg:mt-5">
-                    Viber:&nbsp;
+                    Viber :&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 hover:underline">
                       <Link
                         href={
@@ -229,7 +229,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                     </span>
                   </p>
                   <p className="text-gray-700 lg:mt-5">
-                    Facebook:&nbsp;
+                    Facebook :&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 hover:underline">
                       <Link
                         href={
@@ -241,7 +241,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                     </span>
                   </p>
                   <p className="text-gray-700 lg:mt-5">
-                    Youtube:&nbsp;
+                    Youtube :&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 hover:underline">
                       <Link href={"https://www.youtube.com/@user-eb8qo7nh7y"}>
                         Канал
@@ -250,7 +250,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
                   </p>
 
                   <p className="text-gray-700 lg:mt-5">
-                    Адреса:&nbsp;
+                    Адреса :&nbsp;
                     <span className="text-blue-500 hover:text-blue-700 hover:underline">
                       <Link
                         href={`https://www.google.com/maps/place/%D0%A6%D0%B5%D1%80%D0%BA%D0%B2%D0%B0+%D0%A0%D1%96%D0%B7%D0%B4%D0%B2%D0%B0+%D0%9F%D1%80%D0%B5%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D1%97+%D0%91%D0%BE%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%86%D1%96/@48.582579,22.32541,14z/data=!4m6!3m5!1s0x47391bde37af41d3:0xa82320aab776021a!8m2!3d48.5825787!4d22.3254096!16s%2Fg%2F11gfmztbpb?hl=uk`}
