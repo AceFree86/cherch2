@@ -72,7 +72,7 @@ export async function getStaticProps() {
         news: JSON.parse(JSON.stringify(news)),
         history: JSON.parse(JSON.stringify(history)),
       },
-      revalidate: 120,
+      revalidate: 60,
     };
   } catch (error) {
     console.error(error);
