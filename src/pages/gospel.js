@@ -69,7 +69,10 @@ export default function Gospel({ list, currentPage, numPages }) {
   return (
     <>
       <Head>
-        <title>Проповіді</title>
+        <title>
+          Проповіді Греко-католицька парафія Різдва Пресвятої Богородиці
+          мкр.Дравці
+        </title>
         <meta name="description" content="any description" />
       </Head>
 

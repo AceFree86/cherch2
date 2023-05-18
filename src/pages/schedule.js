@@ -49,7 +49,10 @@ export default function Schedule({ list }) {
   return (
     <>
       <Head>
-        <title>Розклад Богослужінь</title>
+        <title>
+          Розклад Богослужінь Греко-католицька парафія Різдва Пресвятої
+          Богородиці мкр.Дравці
+        </title>
         <meta name="description" content="any description" />
       </Head>
 

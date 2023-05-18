@@ -69,7 +69,9 @@ export default function News({ list, currentPage, numPages }) {
   return (
     <>
       <Head>
-        <title>Новини</title>
+        <title>
+          Новини Греко-католицька парафія Різдва Пресвятої Богородиці мкр.Дравці
+        </title>
         <meta name="description" content="any description" />
       </Head>
 
