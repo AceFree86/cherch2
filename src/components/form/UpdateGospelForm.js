@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { Upload } from "../helpers/Icons";
 import Link from "next/link";
-import { handleDeleteImage, getCurrentDate } from "../helpers/Servise";
+import { handleDeleteImage } from "../helpers/Servise";
 import DefaultImage from "../../../public/images/default-image-url.jpg";
 import Image from "next/image";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
@@ -14,15 +14,12 @@ const UpdateNewsForm = ({ initialValues, page }) => {
   const [uploadImage, setUploadImage] = useState(initialValues.imageUrl || "");
   const [title, setTitle] = useState(initialValues._title || "");
   const [textData, setTextData] = useState(initialValues.text || "");
-  const [toDate, setDate] = useState(getCurrentDate());
 
   const news = {
     _title: title,
     imageUrl: uploadImage,
     text: textData,
-    _date: toDate,
   };
-
 
   async function handleOnChange(e) {
     try {

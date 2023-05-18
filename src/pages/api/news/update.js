@@ -15,7 +15,6 @@ export default async function handler(req, res) {
               _title: body._title,
               imageUrl: body.imageUrl,
               text: body.text,
-              _date: body.toDate,
             },
           }
         );

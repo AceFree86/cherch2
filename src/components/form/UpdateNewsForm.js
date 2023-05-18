@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import { Upload } from "../helpers/Icons";
 import {
   handleDeleteMImage,
-  getCurrentDate,
-  calculateRows,
+  calculateRows
 } from "../helpers/Servise";
 import DefaultImage from "../../../public/images/default-image-url.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { showSuccessToast, showErrorToast } from "../widgets/Toast";
+
 
 const UpdateNewsForm = ({ initialValues, page }) => {
   const router = useRouter();
@@ -18,13 +18,12 @@ const UpdateNewsForm = ({ initialValues, page }) => {
   const [uploadImage, setUploadImage] = useState(initialValues.imageUrl || []);
   const [title, setTitle] = useState(initialValues._title || "");
   const [textData, setTextData] = useState(initialValues.text || "");
-  const [toDate, setDate] = useState(getCurrentDate());
 
   const news = {
     _title: title,
     imageUrl: uploadImage,
     text: textData,
-    _date: toDate,
+   
   };
 
   const handleOnChange = async (e) => {
