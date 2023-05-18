@@ -56,12 +56,12 @@ const UpdateNewsForm = ({ initialValues, page }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("/api/news/add", {
-        method: "POST",
-        body: JSON.stringify(news),
+      await fetch("/api/news/update", {
+        method: "PUT",
+        body: JSON.stringify({ id, body: news }),
       });
       showSuccessToast("Успіх: збережено!");
-      router.push("/news");
+      router.push(page);
     } catch (error) {
       showErrorToast("Помилка: не вдалося зберегти.");
       console.error(error);
