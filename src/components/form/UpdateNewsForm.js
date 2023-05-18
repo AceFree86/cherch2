@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Upload } from "../helpers/Icons";
 import {
   handleDeleteMImage,
+  getCurrentDate,
   calculateRows,
 } from "../helpers/Servise";
 import DefaultImage from "../../../public/images/default-image-url.jpg";
@@ -17,7 +18,7 @@ const UpdateNewsForm = ({ initialValues, page }) => {
   const [uploadImage, setUploadImage] = useState(initialValues.imageUrl || []);
   const [title, setTitle] = useState(initialValues._title || "");
   const [textData, setTextData] = useState(initialValues.text || "");
-  const [toDate, setDate] = useState(initialValues._date || "");
+  const [toDate, setDate] = useState(initialValues._date || getCurrentDate());
 
   const news = {
     _title: title,
