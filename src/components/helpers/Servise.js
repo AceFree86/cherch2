@@ -10,7 +10,7 @@ export const MyFormattedDate = (today) => {
   const date = dayjs(`${year}-${month}-${day}`);
   const formattedDate = date
     .locale("uk")
-    .format("dddd, MMMM D")
+    .format("dddd, MMMM Do")
     .replace(",", "");
   return formattedDate;
 };
