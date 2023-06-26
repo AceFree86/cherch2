@@ -12,7 +12,7 @@ export const MyFormattedDate = (today) => {
     .locale("uk")
     .format("dddd, D MMMM")
     .replace(",", "");
-  return formattedDate;
+  return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 };
 
 const getPublicIdFromUrl = (imageUrl) => {
