@@ -18,7 +18,7 @@ const Details = ({ title, text, state }) => {
       <div initial={{ y: 50 }} whileinview={{ y: 0 }}>
         <h5
           className={`mb-1 text-left font-bold text-2xl sm:text-xl xs:text-lg
-            ${title.includes("неділя") ? "text-red-500" : "text-blue-600"}`}
+            ${title.includes("Неділя") ? "text-red-500" : "text-blue-600"}`}
         >
           {title}
         </h5>
