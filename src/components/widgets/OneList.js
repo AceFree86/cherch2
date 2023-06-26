@@ -6,8 +6,8 @@ const Details = ({ title, text }) => {
     <li className="first:mt-1 last:mb-5 w-[60%] mx-auto flex flex-col justify-between md:w-[80%]">
       <div>
         <h5
-          className={`mb-1 capitalize text-left font-bold text-2xl sm:text-xl xs:text-lg
-            ${title.includes("неділя") ? "text-red-500" : "text-blue-600"}`}
+          className={`mb-1 text-left font-bold text-2xl sm:text-xl xs:text-lg
+            ${title.includes("Неділя") ? "text-red-500" : "text-blue-600"}`}
         >{`${title}`}</h5>
         <ul className="list-disc text-royalNavy max-w-md space-y-1">
           {text.map((label) => (
