@@ -9,7 +9,7 @@ import Infotable from "@/components/widgets/Infotable";
 import OneList from "@/components/widgets/OneList";
 import Pic from "../../public/images/nativite.jpeg";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const { db } = await connectToDatabase();
 
@@ -72,7 +72,6 @@ export async function getStaticProps() {
         news: JSON.parse(JSON.stringify(news)),
         history: JSON.parse(JSON.stringify(history)),
       },
-      revalidate: 1,
     };
   } catch (error) {
     console.error(error);
