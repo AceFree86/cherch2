@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
     const list = await collection
       .find()
       .skip(skip)
-      .sort({ _date: -1 })
+      .sort({ _id: -1 })
       .limit(limit)
       .toArray();
     const total = await collection.countDocuments();
