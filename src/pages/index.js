@@ -58,7 +58,7 @@ export async function getServerSideProps() {
     const news = await db
       .collection("List_News")
       .find({})
-      .limit(2)
+      .limit(3)
       .sort({ $natural: -1 })
       .toArray();
 
