@@ -33,7 +33,7 @@ export const Footer = () => {
       <Layout className="py-8 flex items-center justify-between lg:flex-col lg:py-6 text-blue-600">
         <span>{new Date().getFullYear()} &copy; Всі права захищені.</span>
         <div className="flex items-center">
-          <span>створив&nbsp;&nbsp;Руслан МОРДОВАНЕЦЬ</span>
+          <span>створив&nbsp;&nbsp;Руслан Мордованець</span>
         </div>
         <button
           className="hover:underline"
