@@ -192,7 +192,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
           <div className="mt-5 grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-y-24 sm:gap-x-0">
             <div className="col-span-12">
               <article className="w-full flex justify-between p-12 lg:flex-col lg:p-8 xs:p-4">
-               // google map adres
+              
                 <div className="w-1/2 lg:w-full font-mont text-royalNavy flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
                   <h2 className="font-bold">
                     Настоятель&nbsp;храму&nbsp;о.&nbsp;Павло&nbsp;Фіцай.
