@@ -192,19 +192,7 @@ export default function Home({ todayList, list, gospel, news, history }) {
           <div className="mt-5 grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-y-24 sm:gap-x-0">
             <div className="col-span-12">
               <article className="w-full flex justify-between p-12 lg:flex-col lg:p-8 xs:p-4">
-                <div className="w-1/2 lg:w-full">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10557.696192339188!2d22.325410000000005!3d48.58257900000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47391bde37af41d3%3A0xa82320aab776021a!2z0KbQtdGA0LrQstCwINCg0ZbQt9C00LLQsCDQn9GA0LXRgdCy0Y_RgtC-0Zcg0JHQvtCz0L7RgNC-0LTQuNGG0ZY!5e0!3m2!1suk!2sua!4v1683050758815!5m2!1suk!2sua"
-                   width="100%"
-                   height="450"
-                   title="Адреса Церкви на карті"
-                   className="w-full"
-                   style={{ border: 0 }}
-                   allowFullScreen=""
-                   loading="lazy"
-                   referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
+               // google map adres
                 <div className="w-1/2 lg:w-full font-mont text-royalNavy flex flex-col items-start justify-between pl-6 lg:pl-0 lg:pt-6">
                   <h2 className="font-bold">
                     Настоятель&nbsp;храму&nbsp;о.&nbsp;Павло&nbsp;Фіцай.
