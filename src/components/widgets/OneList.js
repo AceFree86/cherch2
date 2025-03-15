@@ -41,7 +41,7 @@ const OneList = ({ doc }) => {
         ))
       ) : (
         <div className="w-full font-mont text-royalNavy flex flex-col items-center pl-6 font-bold pb-3 lg:pl-0 lg:pt-6">
-          Сьогодні не має богослужінь.
+          На цю годину не має богослужінь.
         </div>
       )}
     </>
